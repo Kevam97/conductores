@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('annexes', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->nullable()->constrained();
+            $table->foreignId('driver_id')->nullable()->constrained();
             $table->string("file");
             $table->timestamps();
         });

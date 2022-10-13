@@ -8,4 +8,34 @@ use Illuminate\Database\Eloquent\Model;
 class Driver extends Model
 {
     use HasFactory;
+
+    public function workReferences(){
+        return $this->hasMany(WorkReference::class);
+    }
+
+    public function personalReferences(){
+        return $this->hasMany(PersonalReference::class);
+    }
+
+    public function ratings(){
+        return $this->hasMany(Rating::class);
+    }
+
+    public function annexes(){
+        return $this->hasMany(Annexe::class);
+    }
+
+    public function courses(){
+        return $this->hasMany(Course::class);
+    }
+
+    public function healthCompany()
+    {
+        return $this->belongsTo(HealthCompany::class);
+    }
+
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
+
 }

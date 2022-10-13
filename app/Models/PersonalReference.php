@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class PersonalReference extends Model
 {
     use HasFactory;
+
+    public function driver()
+    {
+        return $this->belongsTo(Driver::class);
+    }
 }

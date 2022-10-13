@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('image');
             $table->string('payout');
             $table->string('days_off');
-            $table->string('social_benefits');
+            $table->boolean('social_benefits');
             $table->string('company');
             $table->string('requirements');
             $table->timestamps();

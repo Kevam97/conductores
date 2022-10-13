@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('personal_references', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->nullable()->constrained();
+            $table->foreignId('driver_id')->nullable()->constrained();
             $table->string('name');
             $table->string('lastname');
             $table->string('kinship');

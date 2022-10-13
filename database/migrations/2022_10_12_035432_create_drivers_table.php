@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('drivers', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->nullable()->constrained();
             $table->string('name');
             $table->string('lastname');
             $table->string('documentType');

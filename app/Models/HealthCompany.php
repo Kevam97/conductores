@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class HealthCompany extends Model
 {
     use HasFactory;
+
+    public function drivers()
+    {
+        return $this->hasMany(Driver::class);
+    }
 }

@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('work_references', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->nullable()->constrained();
+            $table->foreignId('driver_id')->nullable()->constrained();
             $table->string('company');
             $table->sting('phone');
             $table->date('start_date');

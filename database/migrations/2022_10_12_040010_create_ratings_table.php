@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('ratings', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('driver_id')->nullable()->constrained();
             $table->integer("stars");
             $table->string("ip");
             $table->timestamps();

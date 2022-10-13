@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Annexe extends Model
 {
     use HasFactory;
+
+    public function driver()
+    {
+        return $this->belongsTo(Driver::class);
+    }
 }
