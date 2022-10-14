@@ -14,7 +14,7 @@ use Illuminate\Validation\Rules;
 class UsersForm extends Component
 {
     public $name, $lastname, $docType, $doc, $address, $phone, $email, $country;
-    public $town, $birth, $password;
+    public $town, $birth, $password, $rol;
 
     public  $rules =[
         'name' => 'required',
@@ -26,7 +26,8 @@ class UsersForm extends Component
         'email' => 'required',
         'country' => 'required',
         'town' => 'required',
-        'password'  =>'required'
+        'password'  =>'required',
+        'rol'=>'required'
 
     ];
 
@@ -43,7 +44,8 @@ class UsersForm extends Component
             'country' => $this->country,
             'town' => $this->town,
             'birth' => $this->birth,
-            'password' => Hash::make($this->password)
+            'password' => Hash::make($this->password),
+            'rol_id'=> $this->rol
         ]);
 
         event(new Registered($user));

@@ -56,6 +56,17 @@
             <input wire:model='email' class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-password" type="text" placeholder="Email">
             @error('email') <span class="text-red-500 text-xs italic">{{$message }}</span> @enderror
         </div>
+        <div class="w-full px-3">
+            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
+              Rol
+            </label>
+            <select wire:model='rol' class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white name="" id="">
+                <option value="" selected hidden> Seleccione una opcion</option>
+                <option value="1">Propietario</option>
+                <option value="2">Conductor</option>
+           </select>
+            @error('rol') <span class="text-red-500 text-xs italic">{{$message }}</span> @enderror
+        </div>
       <div class="w-full px-3">
         <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
           Password
