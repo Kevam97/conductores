@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Course extends Model
 {
     use HasFactory;
+    protected $guarded = ['id'];
 
     public function driver(){
         return $this->belongsTo(Driver::class);

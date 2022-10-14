@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('driver_id')->nullable()->constrained();
             $table->string('company');
-            $table->sting('phone');
+            $table->string('phone');
             $table->date('start_date');
             $table->date('end_date');
             $table->string('reason_living');

@@ -16,21 +16,11 @@ return new class extends Migration
         Schema::create('drivers', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->nullable()->constrained();
-            $table->string('name');
-            $table->string('lastname');
-            $table->string('documentType');
-            $table->string('document');
-            $table->string('address');
-            $table->string('phone');
-            $table->string('email');
-            $table->string('country');
-            $table->string('town');
-            $table->date('birth');
-            $table->foreignId('healthCompany_id')->nullable()->constrained();
-            $table->date('experience_year');
+            $table->foreignId('health_company_id')->nullable()->constrained();
+            $table->integer('experience_year');
             $table->string('driving_license');
             $table->date('license_expiration');
-            $table->boolean('status');
+            $table->boolean('status')->default(1);
             $table->timestamps();
             $table->softDeletes();
         });

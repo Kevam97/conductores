@@ -18,6 +18,7 @@ return new class extends Migration
             $table->foreignId('driver_id')->nullable()->constrained();
             $table->string('name');
             $table->string('lastname');
+            $table->string('phone');
             $table->string('kinship');
             $table->string('occupation');
             $table->timestamps();
