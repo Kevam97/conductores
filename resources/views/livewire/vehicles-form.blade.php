@@ -14,7 +14,6 @@
                                 <option value="{{$item->id}}">{{ $item->name}}</option>
                             @endforeach
                         </select>
-                        @json($brand)
                         @error('brand') <span class="text-red-500 text-xs italic">{{$message }}</span> @enderror
                       </div>
                       <div class="w-full md:w-1/2 px-3">
@@ -27,7 +26,6 @@
                                 <option value="{{$item->id}}">{{ $item->name}}</option>
                             @endforeach
                         </select>
-                        @json($line)
                         @error('line') <span class="text-red-500 text-xs italic">{{$message }}</span> @enderror
                       </div>
                     </div>

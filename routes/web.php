@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\RateController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,7 +16,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('Welcome');
+
+Route::get('/calificar/{user:document}',[RateController::class,'show'])->name('rate');
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -24,5 +28,10 @@ Route::get('/dashboard', function () {
 Route::get('/owner', function () {
     return view('owner');
 })->middleware(['auth', 'verified'])->name('owner');
+
+Route::get('/offer', function () {
+    return view('offers');
+})->middleware(['auth', 'verified'])->name('offers');
+
 
 require __DIR__.'/auth.php';
