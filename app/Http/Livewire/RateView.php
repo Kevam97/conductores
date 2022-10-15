@@ -14,13 +14,22 @@ class RateView extends Component
     public $rate;
 
     public function submit(){
-        Rating::create([
-            'driver_id' =>Driver::where('user_id',$this->user->id)->first()->id,
-            'stars' =>$this->rate,
-            'ip' =>request()->ip()
-        ]);
+        $driver = Driver::where('user_id',$this->user->id)->first();
 
-        session()->flash('message','Calificacion guardada');
+        if ($driver) {
+            Rating::create([
+                'driver_id' =>$driver->id,
+                'stars' =>$this->rate,
+                'ip' =>request()->ip()
+            ]);
+            session()->flash('message','Calificacion guardada');
+        }else{
+            session()->flash('messageError','El conductor no se ha registrado aún');
+        }
+
+
+
+
     }
 
     public function render()
