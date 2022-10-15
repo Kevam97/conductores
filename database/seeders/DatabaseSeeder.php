@@ -12,13 +12,30 @@ class DatabaseSeeder extends Seeder
      *
      * @return void
      */
+
     public function run()
     {
+        $this->call(
+            PermissionSeeder::class
+        );
+
         // \App\Models\User::factory(10)->create();
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        $user = \App\Models\User::factory()->create([
+            'name' => 'Admin',
+            'email' => 'test@example.com',
+        ]);
+        $driver = \App\Models\User::factory()->create([
+            'name' => 'Driver',
+            'email' => 'driver@example.com',
+        ]);
+        $owner = \App\Models\User::factory()->create([
+            'name' => 'Owner',
+            'email' => 'owner@example.com',
+        ]);
+
+        $user->assignRole('Administrador');
+        $driver->assignRole('Conductor');
+        $owner->assignRole('Propietario');
     }
 }

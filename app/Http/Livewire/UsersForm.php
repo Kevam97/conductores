@@ -2,7 +2,10 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Owner;
 use App\Models\User;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
@@ -14,7 +17,15 @@ use Illuminate\Validation\Rules;
 class UsersForm extends Component
 {
     public $name, $lastname, $docType, $doc, $address, $phone, $email, $country;
-    public $town, $birth, $password, $rol;
+    public $town, $birth, $password, $role;
+
+    public $roles =[];
+
+    public function mount()
+    {
+        $this->roles = Role::where('id','>',1)->get();
+       // dd( $this->roles);
+    }
 
     public  $rules =[
         'name' => 'required',
@@ -27,7 +38,7 @@ class UsersForm extends Component
         'country' => 'required',
         'town' => 'required',
         'password'  =>'required',
-        'rol'=>'required'
+        'role'=>'required'
 
     ];
 
@@ -45,11 +56,12 @@ class UsersForm extends Component
             'town' => $this->town,
             'birth' => $this->birth,
             'password' => Hash::make($this->password),
-            'rol_id'=> $this->rol
         ]);
 
+        $role = Role::find($this->role);
         event(new Registered($user));
-
+        $user->assignRole($role);
+        if ($role->name == "Propietario") Owner::create(['user_id' => $user->id]);
         Auth::login($user);
        return redirect(RouteServiceProvider::HOME);
     }

@@ -12,12 +12,16 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    @role('Conductor')
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Inscripcion conductor') }}
                     </x-nav-link>
+                    @endrole
+                    @can('owner_create')
                     <x-nav-link :href="route('owner')" :active="request()->routeIs('owner')">
                         {{ __('Inscripcion propietario') }}
                     </x-nav-link>
+                    @endcan
                     <x-nav-link :href="route('offers')" :active="request()->routeIs('offers')">
                         {{ __('Oferta') }}
                     </x-nav-link>
