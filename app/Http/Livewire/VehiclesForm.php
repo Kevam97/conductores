@@ -41,10 +41,11 @@ class VehiclesForm extends Component
     public function submit(){
         $this->validate();
         $url = $this->image->store('documents','public');
+
         $dd= Vehicle::create([
             'brand_id' => $this->brand,
             'line_id' => $this->line,
-            'owner_id' => Owner::find(Auth::id())->id,
+            'owner_id' => Owner::where('user_id',Auth::id())->first()->id,
             'model' => $this->model,
             'vehicle_registration' => $this->plate,
             'image'  => $url,

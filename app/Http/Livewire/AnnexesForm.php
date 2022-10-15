@@ -25,7 +25,7 @@ class AnnexesForm extends Component
     public function submit(){
         $this->validate();
         $url = $this->file->store('documents','public');
-        $driver =Driver::find(Auth::id());
+        $driver =Driver::where('user_id',Auth::id())->first();
         if ($driver) {
             Annexe::create([
                 'driver_id' => $driver->id,

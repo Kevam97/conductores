@@ -20,10 +20,10 @@ class PersonalForm extends Component
     ];
     public function submit(){
         $this->validate();
-        $driver =Driver::find(Auth::id());
+        $driver =Driver::where('user_id',Auth::id())->first();
         if ($driver) {
             PersonalReference::create([
-                'driver_id' => Driver::find(Auth::id())->id,
+                'driver_id' => $driver->id,
                 'name' => $this->name,
                 'lastname' => $this->lastname,
                 'phone' => $this->phone,

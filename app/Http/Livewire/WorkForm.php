@@ -25,10 +25,10 @@ class WorkForm extends Component
     public function submit(){
         $this->validate();
 
-        $driver =Driver::find(Auth::id());
+        $driver =Driver::where('user_id',Auth::id())->first();
         if ($driver) {
             WorkReference::create([
-                'driver' => Driver::find(Auth::id())->id,
+                'driver' => $driver->id,
                 'company' => $this->company,
                 'phone' => $this->phone,
                 'start_date' => $this->starDate,
