@@ -20,16 +20,21 @@ class PersonalForm extends Component
     ];
     public function submit(){
         $this->validate();
+        $driver =Driver::find(Auth::id());
+        if ($driver) {
+            PersonalReference::create([
+                'driver_id' => Driver::find(Auth::id())->id,
+                'name' => $this->name,
+                'lastname' => $this->lastname,
+                'phone' => $this->phone,
+                'kinship' => $this->kinship,
+                'occupation' => $this->occupation,
+            ]);
+            session()->flash('message','Se ha subido el documento');
 
-        PersonalReference::create([
-            'driver_id' => Driver::find(Auth::id())->id,
-            'name' => $this->name,
-            'lastname' => $this->lastname,
-            'phone' => $this->phone,
-            'kinship' => $this->kinship,
-            'occupation' => $this->occupation,
-        ]);
-        session()->flash('message','Se ha registrado la referencia personal');
+        }else{
+            session()->flash('messageError','Registre los datos del conductor');
+        }
         $this->reset();
 
     }

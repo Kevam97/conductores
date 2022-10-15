@@ -25,12 +25,18 @@ class AnnexesForm extends Component
     public function submit(){
         $this->validate();
         $url = $this->file->store('documents','public');
-        Annexe::create([
-            'driver_id' => Driver::find(Auth::id())->id,
-            'file' =>  $url,
-            'comment' =>  $this->comment
-        ]);
-        session()->flash('message','Se ha subido el documento');
+        $driver =Driver::find(Auth::id());
+        if ($driver) {
+            Annexe::create([
+                'driver_id' => $driver->id,
+                'file' =>  $url,
+                'comment' =>  $this->comment
+            ]);
+            session()->flash('message','Se ha subido el documento');
+
+        }else{
+            session()->flash('messageError','Registre los datos del conductor');
+        }
         $this->reset();
 
     }
