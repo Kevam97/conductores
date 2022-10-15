@@ -12,7 +12,7 @@
           Apellido
         </label>
         <input wire:model='lastname' class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="text" placeholder="Doe">
-        @error('dayOff') <span class="text-red-500 text-xs italic">{{$message }}</span> @enderror
+        @error('lastname') <span class="text-red-500 text-xs italic">{{$message }}</span> @enderror
       </div>
     </div>
     <div class="flex flex-wrap -mx-3 mb-6">
@@ -60,10 +60,11 @@
             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
               Rol
             </label>
-            <select wire:model='rol' class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white name="" id="">
+            <select wire:model='role' class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white name="" id="">
                 <option value="" selected hidden> Seleccione una opcion</option>
-                <option value="1">Propietario</option>
-                <option value="2">Conductor</option>
+                @foreach ($roles as $item)
+                <option value="{{$item->id}}">{{$item->name}}</option>
+                @endforeach
            </select>
             @error('rol') <span class="text-red-500 text-xs italic">{{$message }}</span> @enderror
         </div>

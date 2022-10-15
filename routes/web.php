@@ -20,14 +20,16 @@ Route::get('/', function () {
 
 Route::get('/calificar/{user:document}',[RateController::class,'show'])->name('rate');
 
-
+Route::get('/home', function () {
+    return view('home');
+})->middleware(['auth', 'verified'])->name('home');
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/owner', function () {
     return view('owner');
-})->middleware(['auth', 'verified'])->name('owner');
+})->middleware(['auth', 'verified', 'permission:owner_create'])->name('owner');
 
 Route::get('/offer', function () {
     return view('offers');
