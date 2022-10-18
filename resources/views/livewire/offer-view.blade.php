@@ -11,11 +11,11 @@
                                     <div>{{$item->town }}</div>
                                 </div>
                                 <div>
-                                    <img src="{{env('APP_URL').'storage/'.$item->drivers->pluck('image')->first()}}" alt="Lamp" width="40" height="40">
+                                    <img src="{{env('APP_URL').'/storage/'.$item->drivers->pluck('image')->first()}}" alt="Lamp" width="70" height="70">
                                 </div>
                             </div>
                             <div>
-                                <a class="focus:outline-none text-white bg-yellow-400 font-medium rounded-lg text-sm px-5 py-2  dark:focus:ring-yellow-900"href="{{env('APP_URL').'storage/'.$item->drivers->pluck('annexes')->first()->pluck('file')->first()}}" target="_blank">
+                                <a class="focus:outline-none text-white bg-yellow-400 font-medium rounded-lg text-sm px-5 py-2  dark:focus:ring-yellow-900"href="{{env('APP_URL').'/storage/'.$item->drivers->pluck('annexes')->first()->pluck('file')->first()}}" target="_blank">
                                     Ver hoja de vida
                                 </a>
                             </div>
@@ -31,7 +31,7 @@
                                 </div>
                                 <div id="default-carousel" class="carousel slide relative" data-carousel="static">
                                     @foreach ($item->images as $image)
-                                        <a href="{{env('APP_URL').'storage/'.$image->image}}" target="_blank">Ver imagen</a>
+                                        <a href="{{env('APP_URL').'/storage/'.$image->image}}" target="_blank">Ver imagen</a>
                                     @endforeach
                                 </div>
                             </div>
