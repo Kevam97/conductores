@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->nullable()->constrained();
             $table->foreignId('health_company_id')->nullable()->constrained();
+            $table->string("image");
             $table->integer('experience_year');
             $table->string('driving_license');
             $table->date('license_expiration');

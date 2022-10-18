@@ -3,18 +3,21 @@
 namespace App\Http\Livewire;
 
 use App\Models\Brand;
+use App\Models\Image;
 use App\Models\Line;
 use App\Models\Owner;
 use App\Models\Vehicle;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Livewire\WithFileUploads;
+use Illuminate\Support\Facades\DB;
+
 
 class VehiclesForm extends Component
 {
     use WithFileUploads;
 
-    public $brand, $line, $model, $plate, $image, $payout, $dayOff;
+    public $brand, $line, $model, $plate, $images, $payout, $dayOff;
     public $benefits, $company, $requirements, $brands=[], $lines =[];
 
     public function mount(){
@@ -27,10 +30,7 @@ class VehiclesForm extends Component
         'line' => 'required',
         'model' => 'required',
         'plate' => 'required',
-        'image'  => [
-            'required',
-            'mimes:pdf,png,jpg'
-        ],
+        'images'  => 'required',
         'payout' => 'required',
         'dayOff' => 'required',
         'benefits' => 'required',
@@ -39,23 +39,28 @@ class VehiclesForm extends Component
     ];
 
     public function submit(){
-        $this->validate();
-        $url = $this->image->store('documents','public');
-
-        $dd= Vehicle::create([
+       $this->validate();
+        $vehicle= Vehicle::create([
             'brand_id' => $this->brand,
             'line_id' => $this->line,
             'owner_id' => Owner::where('user_id',Auth::id())->first()->id,
             'model' => $this->model,
             'vehicle_registration' => $this->plate,
-            'image'  => $url,
             'payout' => $this->payout,
             'days_off' => $this->dayOff,
             'social_benefits' => $this->benefits,
             'company' => $this->company,
             'requirements' => $this->requirements
         ]);
-        session()->flash('message','Se ha regsitrado el vehiculo');
+        $data = [];
+        foreach ($this->images as $image) {
+            $data[]= [
+                'vehicle_id'=> $vehicle->id,
+                'image'=> $image->store('images','public')
+            ];
+        }
+        DB::table('images')->insert($data);
+        session()->flash('message','Se ha registrado el vehiculo');
         $this->reset();
 
     }

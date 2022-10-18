@@ -10,13 +10,16 @@ class Owner extends Model
     use HasFactory;
     protected $guarded = ['id'];
 
-    public function vehicles()
-    {
+    public function vehicles(){
         return $this->hasMany(Vehicle::class);
     }
 
     public function user(){
         return $this->belongsTo(User::class);
+    }
+
+    public function images(){
+        return $this->hasMany(Image::class);
     }
 
 }

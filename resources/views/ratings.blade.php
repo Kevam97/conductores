@@ -2,7 +2,7 @@
     <x-auth-card>
         <x-slot name="logo">
             <a href="/">
-                <img src="https://pic.onlinewebfonts.com/svg/img_102153.png" alt="Lamp" width="40" height="40">
+                <img src="{{env('APP_URL').'storage/'.$user->drivers->pluck('image')->first()}}" alt="Lamp" width="80" height="80">
             </a>
         </x-slot>
         <livewire:rate-view :user="$user" />

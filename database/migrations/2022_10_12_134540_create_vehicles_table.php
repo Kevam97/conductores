@@ -20,7 +20,6 @@ return new class extends Migration
             $table->foreignId('owner_id')->nullable()->constrained();
             $table->string('model');
             $table->string('vehicle_registration');
-            $table->string('image');
             $table->string('payout');
             $table->string('days_off');
             $table->boolean('social_benefits');

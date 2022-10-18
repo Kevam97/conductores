@@ -26,10 +26,12 @@ class RateView extends Component
         }else{
             session()->flash('messageError','El conductor no se ha registrado aún');
         }
+    }
 
-
-
-
+    public function setRating($var)
+    {
+        if ($this->rate== $var) $this->rate = 0;
+        else $this->rate = $var;
     }
 
     public function render()

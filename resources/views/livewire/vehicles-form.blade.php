@@ -50,8 +50,8 @@
                         <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
                           Fotos
                         </label>
-                        <input wire:model='image' class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-password" type="file" >
-                        @error('image') <span class="text-red-500 text-xs italic">{{$message }}</span> @enderror
+                        <input wire:model='images' class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-password" type="file" multiple >
+                        @error('images') <span class="text-red-500 text-xs italic">{{$message }}</span> @enderror
                       </div>
                       <div class="w-full px-3">
                         <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
@@ -64,7 +64,7 @@
                         <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
                           Dia de descanso
                         </label>
-                       <select wire:model='dayOff' class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white name="" id="">
+                       <select wire:model='dayOff' class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" name="" id="">
                             <option value="" selected hidden> Seleccione una opcion</option>
                             <option value="Lunes">Lunes</option>
                             <option value="Martes">Martes</option>
