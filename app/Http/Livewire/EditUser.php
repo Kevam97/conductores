@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
 
 class EditUser extends Component
@@ -52,7 +53,7 @@ class EditUser extends Component
         $this->user->email = $this->email;
         $this->user->country = $this->country;
         $this->user->town = $this->town;
-        $this->user->password = $this->password;
+        $this->user->password = Hash::make($this->password);
         $this->user->save();
 
         session()->flash('message','Se ha actulizado');

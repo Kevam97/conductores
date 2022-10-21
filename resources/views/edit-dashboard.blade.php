@@ -127,12 +127,12 @@
                 <div class="accordion accordion-flush" id="accordionCourses">
                     @foreach ($driver->annexes as $annexe)
                         <div class="accordion-item border-l-0 border-r-0 border-b-0 rounded-none bg-white border border-gray-200">
-                            <h2 class="accordion-header mb-0 font-semibold text-xl text-gray-800 leading-tight" id="{{'flush-headingAnnnexes'.$course->id}}">
+                            <h2 class="accordion-header mb-0 font-semibold text-xl text-gray-800 leading-tight" id="{{'flush-headingAnnnexes'.$annexe->id}}">
                             <button class="accordion-button collapsed relative flex items-center w-full  py-4 px-5 text-base text-gray-800 text-left bg-white border-0 rounded-none transition focus:outline-none" type="button" data-bs-toggle="collapse" data-bs-target="{{'#flush-collapseAnnexes'.$annexe->id}}" aria-expanded="false" aria-controls="{{'flush-collapseAnnexes'.$annexe->id}}">
                                     {{$annexe->comment}}
                             </button>
                             </h2>
-                            <div id="{{'flush-collapseAnnexes'.$annexe->id}}" class="accordion-collapse collapse" aria-labelledby="{{'flush-headingAnnnexes'.$course->id}}"
+                            <div id="{{'flush-collapseAnnexes'.$annexe->id}}" class="accordion-collapse collapse" aria-labelledby="{{'flush-headingAnnnexes'.$annexe->id}}"
                             data-bs-parent="#accordionCourses">
                                 <div class="accordion-body py-4 px-5">
                                     <livewire:edit-annexes :annexe="$annexe">

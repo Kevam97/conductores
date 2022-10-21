@@ -28,6 +28,6 @@
               <div class="accordion-body py-4 px-5">
                     <livewire:vehicles-form/>
               </div>
-          </div>
+        </div>
     </div>
 </x-app-layout>

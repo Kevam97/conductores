@@ -19,10 +19,10 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Inscripcion conductor') }}
                     </x-nav-link>
-                    @endrole
                     <x-nav-link :href="route('editdashboard')" :active="request()->routeIs('editdashboard')">
                         {{ __('Editar Inscripcion') }}
                     </x-nav-link>
+                    @endrole
                     @can('owner_create')
                     <x-nav-link :href="route('owner')" :active="request()->routeIs('owner')">
                         {{ __('Inscripcion propietario') }}
