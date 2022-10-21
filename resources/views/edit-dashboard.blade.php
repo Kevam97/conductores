@@ -17,6 +17,8 @@
                 <livewire:edit-user :user="$user"/>
             </div>
         </div>
+
+        @if ($driver)
         <div class="accordion-item border-l-0 border-r-0 rounded-none bg-white border border-gray-200">
             <h2 class="accordion-header mb-0 font-semibold text-xl text-gray-800 leading-tight" id="flush-headingTwo">
               <button class="accordion-button collapsed relative flex items-center w-full py-4 px-5 text-base text-gray-800 text-left bg-white border-0 rounded-none transition focus:outline-none" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
@@ -144,6 +146,13 @@
                 </div>
             </div>
         </div>
+        @else
+        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+                {{ __('Realice el registro para editar los demás campos') }}
+            </h2>
+        </div>
+        @endif
 
 
     </div>

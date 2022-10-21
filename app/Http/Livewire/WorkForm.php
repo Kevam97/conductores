@@ -16,7 +16,7 @@ class WorkForm extends Component
     public function mount()
     {
         $this->driver = Driver::where('user_id',Auth::id())->first();
-        $this->count = $this->driver->workReferences->count();
+        $this->count = ($this->driver) ? $this->driver->workReferences->count() : 0 ;
     }
 
 

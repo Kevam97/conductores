@@ -14,7 +14,7 @@ class PersonalForm extends Component
 
     public function mount(){
         $this->driver = Driver::where('user_id',Auth::id())->first();
-        $this->count = $this->driver->personalReferences->count();
+        $this->count = ($this->driver) ? $this->driver->personalReferences->count() : 0 ;
     }
 
     public  $rules =[

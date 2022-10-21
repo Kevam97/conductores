@@ -18,7 +18,7 @@ class AnnexesForm extends Component
     public function mount()
     {
         $this->driver = Driver::where('user_id',Auth::id())->first();
-        $this->count = $this->driver->annexes->count();
+        $this->count = ($this->driver) ? $this->driver->annexes->count() : 0  ;
     }
 
     public  $rules =[

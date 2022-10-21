@@ -15,7 +15,7 @@ class CoursesForm extends Component
     public function mount()
     {
         $this->driver = Driver::where('user_id',Auth::id())->first();
-        $this->count = $this->driver->courses->count();
+        $this->count = ($this->driver) ? $this->driver->courses->count(): 0 ;
     }
 
     public  $rules =[
