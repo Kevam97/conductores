@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EditDashboardController;
 use App\Http\Controllers\RateController;
 use Illuminate\Support\Facades\Route;
 
@@ -23,9 +24,13 @@ Route::get('/calificar/{user:document}',[RateController::class,'show'])->name('r
 Route::get('/home', function () {
     return view('home');
 })->middleware(['auth', 'verified'])->name('home');
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get('/editdashboard',[EditDashboardController::class,'index']
+)->middleware(['auth', 'verified'])->name('editdashboard');
 
 Route::get('/owner', function () {
     return view('owner');

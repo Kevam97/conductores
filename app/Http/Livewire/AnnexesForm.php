@@ -13,6 +13,13 @@ class AnnexesForm extends Component
     use WithFileUploads;
 
     public $file, $comment;
+    public $count, $driver;
+
+    public function mount()
+    {
+        $this->driver = Driver::where('user_id',Auth::id())->first();
+        $this->count = $this->driver->annexes->count();
+    }
 
     public  $rules =[
         'file' => [
@@ -25,18 +32,22 @@ class AnnexesForm extends Component
     public function submit(){
         $this->validate();
         $url = $this->file->store('documents','public');
-        $driver =Driver::where('user_id',Auth::id())->first();
-        if ($driver) {
-            Annexe::create([
-                'driver_id' => $driver->id,
-                'file' =>  $url,
-                'comment' =>  $this->comment
-            ]);
-            session()->flash('message','Se ha subido el documento');
+        if($this->count < 3){
+            if ($this->driver) {
+                Annexe::create([
+                        'driver_id' => $this->driver->id,
+                        'file' =>  $url,
+                        'comment' =>  $this->comment
+                    ]);
+                    session()->flash('message','Se ha subido el documento');
 
+                }else{
+                    session()->flash('messageError','Registre los datos del conductor');
+                }
         }else{
-            session()->flash('messageError','Registre los datos del conductor');
+            session()->flash('messageWarn','No puede registrar más');
         }
+
         $this->reset();
 
     }

@@ -24,6 +24,11 @@ class PermissionSeeder extends Seeder
             'guard_name'=> 'web'
         ]);
 
+        $driverCreate = Permission::create([
+            'name' => 'driver_create',
+            'guard_name'=> 'web'
+        ]);
+
         $admin = Role::create([
             'name' =>'Administrador',
             'guard_name' =>'web']);
@@ -35,6 +40,7 @@ class PermissionSeeder extends Seeder
             'guard_name' =>'web']);
 
         $owner->givePermissionTo($ownerCreate);
+        $driver->givePermissionTo($driverCreate);
 
 
     }

@@ -30,7 +30,10 @@ class VehiclesForm extends Component
         'line' => 'required',
         'model' => 'required',
         'plate' => 'required',
-        'images'  => 'required',
+        'images'  =>
+            'array|min:1|max:5',
+			'images.*' => 'image|max:10240' // 10MB Ma
+        ,
         'payout' => 'required',
         'dayOff' => 'required',
         'benefits' => 'required',

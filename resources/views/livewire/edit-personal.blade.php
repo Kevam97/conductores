@@ -3,9 +3,6 @@
         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
             <div class="p-6 bg-white border-b border-gray-200">
                 <form wire:submit.prevent="submit" class="w-full max-w-lg">
-                    <span class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
-                        Registre 3 referencias personales, registrados {{$count}}
-                    </span>
                     <div class="flex flex-wrap -mx-3 mb-6">
                       <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                         <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
@@ -55,16 +52,6 @@
                             @if (session()->has('message'))
                                 <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-4 rounded relative" role="alert">
                                     {{ session('message') }}
-                                </div>
-                            @endif
-                            @if (session()->has('messageError'))
-                                <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-4 rounded relative" role="alert">
-                                    {{ session('messageError') }}
-                                </div>
-                            @endif
-                            @if (session()->has('messageWarn'))
-                                <div class="bg-orange-100 border border-orange-400 text-orange-700 px-4 py-4 rounded relative" role="alert">
-                                    {{ session('messageWarn') }}
                                 </div>
                             @endif
                         </div>
