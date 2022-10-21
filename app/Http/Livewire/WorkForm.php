@@ -36,7 +36,7 @@ class WorkForm extends Component
         if($this->count < 3){
             if ($this->driver) {
                 WorkReference::create([
-                    'driver' => $this->driver->id,
+                    'driver_id' => $this->driver->id,
                     'company' => $this->company,
                     'phone' => $this->phone,
                     'start_date' => $this->starDate,
