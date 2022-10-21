@@ -4,7 +4,7 @@
             <div class="p-6 bg-white border-b border-gray-200">
                 <form wire:submit.prevent="submit" class="w-full max-w-lg">
                     <span class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
-                        Registre 3 referencias personales, registrados {{$count}}
+                        Registre 3 referencias laborales, registrados {{$count}}
                     </span>
                     <div class="flex flex-wrap -mx-3 mb-6">
                       <div class="w-full px-3">
