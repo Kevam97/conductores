@@ -15,19 +15,25 @@
                     <x-nav-link :href=" 'https://conductores10.com/'" >
                         {{ __('Home') }}
                     </x-nav-link>
-                    @role('Conductor')
+                    @can('driver_create')
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Inscripcion conductor') }}
                     </x-nav-link>
                     <x-nav-link :href="route('editdashboard')" :active="request()->routeIs('editdashboard')">
                         {{ __('Editar Inscripcion') }}
                     </x-nav-link>
-                    @endrole
+                    @endcan
                     @can('owner_create')
                     <x-nav-link :href="route('owner')" :active="request()->routeIs('owner')">
                         {{ __('Inscripcion propietario') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('editowner')" :active="request()->routeIs('editowner')">
+                        {{ __('Editar Inscripcion') }}
+                    </x-nav-link>
                     @endcan
+                    <x-nav-link :href="route('subs')" :active="request()->routeIs('subs')">
+                        {{ __('Subscripciones y pagos') }}
+                    </x-nav-link>
                     <x-nav-link :href="route('offers')" :active="request()->routeIs('offers')">
                         {{ __('Oferta') }}
                     </x-nav-link>

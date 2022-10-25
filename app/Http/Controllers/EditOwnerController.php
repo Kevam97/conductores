@@ -6,14 +6,13 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class EditDashboardController extends Controller
+class EditOwnerController extends Controller
 {
-    public function index()
+    public function index(  )
     {
         $user = User::find(Auth::id());
-        $driver = $user->drivers->first();
+        $owner = $user->owners->first();
 
-        return view('edit-dashboard',compact('user','driver'));
-
+        return view('edit-owner', compact('user','owner'));
     }
 }
