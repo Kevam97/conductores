@@ -21,7 +21,7 @@ return new class extends Migration
             $table->integer('experience_year');
             $table->string('driving_license');
             $table->date('license_expiration');
-            $table->boolean('status')->default(1)->comment('1: inactive, 2: active');
+            $table->boolean('status')->default(0)->comment('0: inactive, 1: active');
             $table->timestamps();
             $table->softDeletes();
         });

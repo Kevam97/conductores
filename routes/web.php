@@ -33,12 +33,18 @@ Route::get('/dashboard', function () {
 Route::get('/editdashboard',[EditDashboardController::class,'index']
 )->middleware(['auth', 'verified',  'permission:driver_create'])->name('editdashboard');
 
+Route::get('/qr',[EditDashboardController::class,'qr']
+)->middleware(['auth', 'verified',  'permission:driver_create'])->name('qr');
+
+
 Route::get('/editowner',[EditOwnerController::class,'index']
 )->middleware(['auth', 'verified',  'permission:owner_create'])->name('editowner');
 
 Route::get('/owner', function () {
     return view('owner');
 })->middleware(['auth', 'verified', 'permission:owner_create'])->name('owner');
+
+
 
 Route::get('/subscriptions', function () {
     return view('subscriptions');

@@ -44,6 +44,7 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'birth' => 'date'
     ];
 
     public function drivers()
@@ -59,6 +60,11 @@ class User extends Authenticatable
     public function cards()
     {
         return $this->hasMany(Card::class);
+    }
+
+    public function bills()
+    {
+        return $this->hasMany(Bill::class);
     }
 
 

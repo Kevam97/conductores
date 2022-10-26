@@ -18,17 +18,24 @@
                 </div>
             </div>
         </div>
-        {{-- <div class="accordion-item border-t-0 border-l-0 border-r-0 rounded-none bg-white border border-gray-200">
+        <div class="accordion-item border-t-0 border-l-0 border-r-0 rounded-none bg-white border border-gray-200">
             <h2 class="accordion-header mb-0 font-semibold text-xl text-gray-800 leading-tight" id="flush-headingTwo">
               <button class="accordion-button collapsed relative flex items-center w-full py-4 px-5 text-base text-gray-800 text-left bg-white border-0 rounded-none transition focus:outline-none" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-                    {{ __('Vehiculo') }}
+                    {{ __('Suscripciones ') }}
               </button>
             </h2>
             <div id="flush-collapseTwo" class="accordion-collapse border-0 collapse "
               aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
               <div class="accordion-body py-4 px-5">
-                    <livewire:vehicles-form/>
+                <div class="flex mb-4">
+                    <div class="w-1/2 h-12">
+                        <livewire:susbscription-form />
+                    </div>
+                    <div class="w-1/2 bg-gray-500 h-12">
+                        Formulario 2
+                    </div>
+                  </div>
               </div>
-        </div> --}}
+        </div>
     </div>
 </x-app-layout>

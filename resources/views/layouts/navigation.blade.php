@@ -22,6 +22,9 @@
                     <x-nav-link :href="route('editdashboard')" :active="request()->routeIs('editdashboard')">
                         {{ __('Editar Inscripcion') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('qr')" :active="request()->routeIs('qr')">
+                        {{ __('Mi QR') }}
+                    </x-nav-link>
                     @endcan
                     @can('owner_create')
                     <x-nav-link :href="route('owner')" :active="request()->routeIs('owner')">

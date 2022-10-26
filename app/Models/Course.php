@@ -10,6 +10,10 @@ class Course extends Model
     use HasFactory;
     protected $guarded = ['id'];
 
+    protected $casts =[
+        'date' => 'date'
+    ];
+
     public function driver(){
         return $this->belongsTo(Driver::class);
     }

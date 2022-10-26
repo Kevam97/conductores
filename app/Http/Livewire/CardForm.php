@@ -4,11 +4,14 @@ namespace App\Http\Livewire;
 
 use App\Models\Card;
 use App\Models\User;
+use App\Traits\EpaycoTrait;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class CardForm extends Component
 {
+    use EpaycoTrait;
+
     public $number, $date, $cvc;
 
     public $rules = [
@@ -24,14 +27,22 @@ class CardForm extends Component
         $date= explode("-",$this->date);
         $user = User::find(Auth::id());
 
-        Card::create([
+        $card = Card::create([
             'user_id' => $user->id,
-            'epayco_id'  => null,
             'number' => $this->number,
             'year'  => $date[0],
             'month'  =>$date[1],
             'cvc' => $this->cvc
         ]);
+
+        $epayco = $this->create($card, $user);
+        $card->epayco_id = $epayco['card'];
+        $card->save();
+
+        if ($user->epayco_id == null){
+            $user->epayco_id = $epayco['customer'];
+            $user->save();
+        }
 
         session()->flash('message','Se ha registrado la tarjeta');
 
@@ -40,6 +51,7 @@ class CardForm extends Component
 
     public function render()
     {
+        //dd($this->listPlans());
         return view('livewire.card-form');
     }
 }

@@ -18,6 +18,7 @@ return new class extends Migration
             $table->foreignId('brand_id')->nullable()->constrained();
             $table->foreignId('line_id')->nullable()->constrained();
             $table->foreignId('owner_id')->nullable()->constrained();
+            $table->foreignId('driver_id')->nullable()->constrained();
             $table->string('model');
             $table->string('vehicle_registration');
             $table->string('payout');

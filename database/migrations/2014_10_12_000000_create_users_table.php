@@ -26,6 +26,7 @@ return new class extends Migration
             $table->string('country');
             $table->string('town');
             $table->date('birth');
+            $table->string('subscription')->nullable();
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();

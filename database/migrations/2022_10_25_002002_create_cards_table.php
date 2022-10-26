@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('year');
             $table->string('month');
             $table->string('cvc');
+            $table->boolean('status')->default(0)->comment('0: inactive, 1: active');
             $table->timestamps();
         });
     }

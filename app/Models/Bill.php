@@ -8,4 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 class Bill extends Model
 {
     use HasFactory;
+
+    protected $guarded = ['id'];
+
+    protected $casts =[
+        'cutoff' => 'date'
+    ];
+
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
 }
