@@ -42,7 +42,6 @@ class SusbscriptionForm extends Component
         if($pay->status){
             Bill::create([
                 'user_id' => $this->user->id,
-                'reference' => $pay->recibo,
                 'status' => 1,
                 'cutoff' => $pay->fecha
             ]);
