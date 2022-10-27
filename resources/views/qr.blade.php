@@ -14,7 +14,7 @@
               </div>
               <div class="p-6">
                 <p class="text-gray-700 text-base mb-4">
-                    {!! QrCode::size(300)->generate(env('APP_URL').'calificar/'.$user->document); !!}
+                    {!! QrCode::size(300)->generate(env('APP_URL').'/calificar/'.$user->document); !!}
                 </p>
               </div>
               <div class="py-3 px-6 border-t border-gray-300 text-gray-600">

@@ -49,6 +49,7 @@ class AnnexesForm extends Component
         }
 
         $this->reset();
+        $this->mount();
 
     }
 
