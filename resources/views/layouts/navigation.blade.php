@@ -37,6 +37,9 @@
                     <x-nav-link :href="route('subs')" :active="request()->routeIs('subs')">
                         {{ __('Subscripciones y pagos') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('proponents')" :active="request()->routeIs('proponents')">
+                        {{ __('Proponentes') }}
+                    </x-nav-link>
                     <x-nav-link :href="route('offers')" :active="request()->routeIs('offers')">
                         {{ __('Oferta') }}
                     </x-nav-link>

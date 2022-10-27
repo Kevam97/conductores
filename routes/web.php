@@ -22,6 +22,10 @@ Route::get('/', function () {
 
 Route::get('/calificar/{user:document}',[RateController::class,'show'])->name('rate');
 
+Route::get('/topten',[RateController::class,'topTen'])->name('topten');
+
+
+
 Route::get('/home', function () {
     return view('home');
 })->middleware(['auth', 'verified'])->name('home');
@@ -43,6 +47,8 @@ Route::get('/editowner',[EditOwnerController::class,'index']
 Route::get('/owner', function () {
     return view('owner');
 })->middleware(['auth', 'verified', 'permission:owner_create'])->name('owner');
+
+Route::get('/proponents', [EditOwnerController::class,'proponents'])->middleware(['auth', 'verified'])->name('proponents');
 
 
 

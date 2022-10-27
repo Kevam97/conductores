@@ -25,4 +25,14 @@ class Vehicle extends Model
     public function images(){
         return $this->hasMany(Image::class);
     }
+
+    public function offers()
+    {
+        return $this->hasMany(Offer::class);
+    }
+
+    public function driver()
+    {
+        return $this->belongsTo(Driver::class);
+    }
 }

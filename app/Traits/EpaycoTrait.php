@@ -35,9 +35,9 @@ trait EpaycoTrait
         return $sub;
     }
 
-    public function paySubscriptions(User $user, $card){
+    public function paySubscriptions(User $user,  $plan, $card){
         $sub = $this->epayco->subscriptions->charge(array(
-            "id_plan" => $user->susbcription,
+            "id_plan" => $plan,
             "customer" => $user->epayco_id,
             "token_card" => $card,
             "doc_type" => "CC",

@@ -8,6 +8,13 @@ use Illuminate\Support\Facades\Auth;
 
 class EditOwnerController extends Controller
 {
+    public function proponents(  )
+    {
+        $user = User::find(Auth::id());
+        $owner = $user->owners->first();
+        return view('owner-drivers', compact('owner'));
+    }
+
     public function index(  )
     {
         $user = User::find(Auth::id());

@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Bill;
 use App\Models\User;
 use App\Traits\EpaycoTrait;
 use Illuminate\Support\Facades\Auth;
@@ -33,13 +34,23 @@ class SusbscriptionForm extends Component
         $this->plan = ($this->user->hasRole('Conductor'))  ? 'Conductor' : 'Propietario';
         //dd($this->plan);
         $sub = $this->subscriptions($this->user,$this->plan,$this->card );
-        if($sub->status && $this->user->subscription == null){
+        if($sub->status){
             $this->user->subscription = $sub->id;
             $this->user->save();
         }
-        $pay = $this->paySubscriptions($this->user,$this->card);
+        $pay = $this->paySubscriptions($this->user,$this->plan,$this->card);
+        if($pay->status){
+            Bill::create([
+                'user_id' => $this->user->id,
+                'reference' => $pay->recibo,
+                'status' => 1,
+                'cutoff' => $pay->fecha
+            ]);
+            session()->flash('message','Se ha registrado el Propietario');
 
-        dd($pay);
+        }else{
+            session()->flash('messageError',$pay->data->errors);
+        }
     }
 
     public function render()

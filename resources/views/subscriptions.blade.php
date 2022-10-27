@@ -27,15 +27,10 @@
             <div id="flush-collapseTwo" class="accordion-collapse border-0 collapse "
               aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
               <div class="accordion-body py-4 px-5">
-                <div class="flex mb-4">
-                    <div class="w-1/2 h-12">
-                        <livewire:susbscription-form />
-                    </div>
-                    <div class="w-1/2 bg-gray-500 h-12">
-                        Formulario 2
-                    </div>
-                  </div>
+                  <livewire:susbscription-form />
+
               </div>
+            </div>
         </div>
     </div>
 </x-app-layout>
