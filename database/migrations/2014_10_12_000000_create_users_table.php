@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
+            $table->string('epayco_id')->nullable();
             $table->string('name');
             $table->string('lastname');
             $table->string('documentType');
@@ -25,6 +26,7 @@ return new class extends Migration
             $table->string('country');
             $table->string('town');
             $table->date('birth');
+            $table->string('subscription')->nullable();
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();

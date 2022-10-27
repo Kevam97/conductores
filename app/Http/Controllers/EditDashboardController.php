@@ -12,7 +12,16 @@ class EditDashboardController extends Controller
     {
         $user = User::find(Auth::id());
         $driver = $user->drivers->first();
+
         return view('edit-dashboard',compact('user','driver'));
 
     }
+
+    public function qr()
+    {
+        $user = User::find(Auth::id());
+
+        return view('qr',compact('user'));
+    }
+
 }

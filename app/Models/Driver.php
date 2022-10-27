@@ -10,6 +10,10 @@ class Driver extends Model
     use HasFactory;
     protected $guarded = ['id'];
 
+    protected $casts =[
+        'license_expiration' => 'date'
+    ];
+
     public function workReferences(){
         return $this->hasMany(WorkReference::class);
     }
@@ -37,6 +41,15 @@ class Driver extends Model
 
     public function user(){
         return $this->belongsTo(User::class);
+    }
+    public function offers()
+    {
+        return $this->hasMany(Offer::class);
+    }
+
+    public function vehicles()
+    {
+        return $this->hasMany(Driver::class);
     }
 
 }

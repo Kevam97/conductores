@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\EditDashboardController;
+use App\Http\Controllers\EditOwnerController;
 use App\Http\Controllers\RateController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,20 +22,39 @@ Route::get('/', function () {
 
 Route::get('/calificar/{user:document}',[RateController::class,'show'])->name('rate');
 
+Route::get('/topten',[RateController::class,'topTen'])->name('topten');
+
+
+
 Route::get('/home', function () {
     return view('home');
 })->middleware(['auth', 'verified'])->name('home');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+})->middleware(['auth', 'verified', 'permission:driver_create'])->name('dashboard');
 
 Route::get('/editdashboard',[EditDashboardController::class,'index']
-)->middleware(['auth', 'verified'])->name('editdashboard');
+)->middleware(['auth', 'verified',  'permission:driver_create'])->name('editdashboard');
+
+Route::get('/qr',[EditDashboardController::class,'qr']
+)->middleware(['auth', 'verified',  'permission:driver_create'])->name('qr');
+
+
+Route::get('/editowner',[EditOwnerController::class,'index']
+)->middleware(['auth', 'verified',  'permission:owner_create'])->name('editowner');
 
 Route::get('/owner', function () {
     return view('owner');
 })->middleware(['auth', 'verified', 'permission:owner_create'])->name('owner');
+
+Route::get('/proponents', [EditOwnerController::class,'proponents'])->middleware(['auth', 'verified'])->name('proponents');
+
+
+
+Route::get('/subscriptions', function () {
+    return view('subscriptions');
+})->middleware(['auth', 'verified'])->name('subs');
 
 Route::get('/offer', function () {
     return view('offers');

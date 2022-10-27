@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->nullable()->constrained();
             $table->string('notes')->nullable();
+            $table->boolean('status')->default(0)->comment('0: inactive, 1: active');
             $table->timestamps();
         });
     }
