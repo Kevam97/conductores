@@ -5,9 +5,12 @@ namespace App\Http\Livewire;
 use App\Models\Owner;
 use App\Models\Vehicle;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class OwnerRates extends Component
 {
+    use WithPagination;
+
     public Owner $owner;
 
     public function render()

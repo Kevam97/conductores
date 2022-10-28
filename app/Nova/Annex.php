@@ -9,7 +9,7 @@ use Laravel\Nova\Fields\Text;
 
 use Laravel\Nova\Http\Requests\NovaRequest;
 
-class Annexe extends Resource
+class Annex extends Resource
 {
     public static $displayInNavigation = false;
     /**

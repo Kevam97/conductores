@@ -55,7 +55,7 @@ class Driver extends Resource
             Date::make('license expiration'),
             Boolean::make('status'),
 
-            //HasMany::make('Annexes'),
+            HasMany::make('Annexes'),
             HasMany::make('PersonalReferences'),
             HasMany::make('WorkReferences'),
             HasMany::make('Courses'),

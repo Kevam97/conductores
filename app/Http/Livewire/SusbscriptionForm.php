@@ -39,13 +39,13 @@ class SusbscriptionForm extends Component
             $this->user->save();
         }
         $pay = $this->paySubscriptions($this->user,$this->plan,$this->card);
-        if($pay->status){
+        if(empty($pay->status)){
             Bill::create([
                 'user_id' => $this->user->id,
                 'status' => 1,
-                'cutoff' => $pay->fecha
+                'cutoff' => $pay->data->fecha
             ]);
-            session()->flash('message','Se ha registrado el Propietario');
+            session()->flash('message','Te has suscrito correctamente');
 
         }else{
             session()->flash('messageError',$pay->data->errors);

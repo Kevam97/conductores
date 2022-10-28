@@ -25,7 +25,7 @@
                         <div class="w-full md:w-1/2 px-3">
                             <br>
                             <button class="bg-orange-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
-                                Suscirbirse
+                                Suscribirse
                             </button>
                         </div>
                     </div>
