@@ -48,7 +48,7 @@ Route::get('/owner', function () {
     return view('owner');
 })->middleware(['auth', 'verified', 'permission:owner_create'])->name('owner');
 
-Route::get('/proponents', [EditOwnerController::class,'proponents'])->middleware(['auth', 'verified'])->name('proponents');
+Route::get('/proponents', [EditOwnerController::class,'proponents'])->middleware(['auth', 'verified', 'permission:owner_create'])->name('proponents');
 
 
 

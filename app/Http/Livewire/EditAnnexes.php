@@ -23,6 +23,8 @@ class EditAnnexes extends Component
         $this->annexe->file = $url;
         $this->annexe->comment =  $this->comment;
         $this->annexe->save();
+
+        $this->reset();
         $this->mount();
 
         session()->flash('message','Se ha actulizado');

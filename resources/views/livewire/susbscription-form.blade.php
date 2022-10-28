@@ -13,7 +13,7 @@
                             Tarjeta
                         </label>
                         <select wire:model="card" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name">
-                            <option value=""  selected hidden> Seleccione una opcion</option>
+                            <option value=""  selected hidden>Registre su tarjeta</option>
                             @foreach ($cards as $card)
                                 <option value="{{ $card->epayco_id}}">{{ $card->number}}</option>
                             @endforeach

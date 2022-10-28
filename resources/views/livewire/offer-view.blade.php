@@ -3,8 +3,8 @@
         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
             <div class="p-6 bg-white border-b border-gray-200">
                 <div class="grid grid-cols-2 gap-10">
-                    <div class="flex flex-col rounded-lg shadow-lg bg-white max-w">
-                        <h2 class="font-semibold text-xl text-gray-800 text-center leading-tight">
+                    <div class="flex flex-col px-6  rounded-lg shadow-lg bg-yellow-400  max-w">
+                        <h2 class="font-semibold text-xl text-white text-center leading-tight">
                             {{ __('Conductores') }}
                         </h2>
 
