@@ -8,7 +8,7 @@
                             {{ __('Conductores') }}
                         </h2>
                         @foreach ($drivers as $item)
-                            @if ($item->id == 1)
+                            @if ($item->drivers->first()->status == 1)
                                 <div class="grid grid-cols-2 divide-x py-3">
                                     <div class="flex flex-col ...">
                                         <div>{{$item->name.' '.$item->lastname}}</div>
