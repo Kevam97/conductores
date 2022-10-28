@@ -3,37 +3,35 @@
         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
             <div class="p-6 bg-white border-b border-gray-200">
                 <div class="grid grid-cols-2 gap-10">
-                    <div class="flex flex-col">
-                        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+                    <div class="flex flex-col rounded-lg shadow-lg bg-white max-w">
+                        <h2 class="font-semibold text-xl text-gray-800 text-center leading-tight">
                             {{ __('Conductores') }}
                         </h2>
+
                         @foreach ($drivers as $item)
-                            {{-- @if ($item->drivers->first()->status == 1) --}}
-                                <div class="grid grid-cols-2 divide-x py-3">
-                                    <div class="flex flex-col ...">
-                                        <div>{{$item->name.' '.$item->lastname}}</div>
-                                        <div>{{$item->town }}</div>
-                                    </div>
-                                    <div>
-                                        <img src="{{env('APP_URL').'/storage/'.$item->drivers->pluck('image')->first()}}" alt="Lamp" width="70" height="70">
-                                    </div>
+                            <div class="grid grid-cols-2 divide-x py-3 px-3  rounded-lg bg-white shadow-lg" ">
+                                <div class="flex flex-col ...">
+                                    <div>{{$item->user->name.' '.$item->user->lastname}}</div>
+                                    <div>{{$item->town }}</div>
                                 </div>
                                 <div>
-                                    <a class="focus:outline-none text-white bg-yellow-400 font-medium rounded-lg text-sm px-5 py-2  dark:focus:ring-yellow-900"href="{{env('APP_URL').'/storage/'.$item->drivers->pluck('annexes')->first()->pluck('file')->first()}}" target="_blank">
+                                    <img src="{{env('APP_URL').'/storage/'.$item->image}}" class="rounded-lg w-32 mb-4 mx-auto" height="70">
+                                </div>
+                                <div>
+                                    <a class="focus:outline-none text-white bg-yellow-400 font-medium rounded-lg text-sm px-5 py-2  dark:focus:ring-yellow-900"href="{{env('APP_URL').'/storage/'.$item->annexes->first()->file}}" target="_blank">
                                         Ver hoja de vida
                                     </a>
                                 </div>
-                            {{-- @endif --}}
-
+                            </div>
                         @endforeach
                     </div>
-                    <div class="flex flex-col">
-                        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+                    <div class="flex justify-center flex-col px-6 rounded-lg shadow-lg bg-neutral-900 max-w ">
+                        <h2 class="font-semibold text-xl text-white  text-center leading-tight">
                             {{ __('Propietarios') }}
                         </h2>
                         @foreach ($owners as $item)
                         <form wire:submit.prevent="submit({{$item->id}})" class="w-full max-w-lg">
-                            <div class="grid grid-cols-2 divide-x">
+                            <div class="grid grid-cols-2 py-3 px-3  rounded-lg  bg-white ">
                                 <div class="flex flex-col ...">
                                     <div>{{$item->vehicle_registration }}</div>
                                     <div>{{$item->payout }}</div>
@@ -74,12 +72,13 @@
                                       <span class="visually-hidden">Next</span>
                                     </button>
                                 </div>
+                                <div>
+                                    <button type="submit" class="focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:focus:ring-yellow-900">
+                                        Aplicar
+                                    </button>
+                                </div>
                             </div>
-                            <div>
-                                <button type="submit" class="focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:focus:ring-yellow-900">
-                                    Aplicar
-                                </button>
-                            </div>
+                            <br>
                             @if (session()->has('message'))
                             <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-4 rounded relative" role="alert">
                                 {{ session('message') }}
