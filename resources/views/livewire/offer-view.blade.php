@@ -85,7 +85,12 @@
                             <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-4 rounded relative" role="alert">
                                 {{ session('message') }}
                             </div>
-                        @endif
+                            @endif
+                            @if (session()->has('messageWarn'))
+                            <div class="bg-orange-100 border border-orange-400 text-orange-700 px-4 py-4 rounded relative" role="alert">
+                                {{ session('messageWarn') }}
+                            </div>
+                            @endif
                         </form>
                         @endforeach
                         {{ $owners->links() }}

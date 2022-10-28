@@ -33,11 +33,16 @@ class OfferView extends Component
     //     //dd( $this->owners);
     // }
     public function submit($vehicle){
-        Offer::create([
-            'driver_id' => $this->driver->id,
-            'vehicle_id' => $vehicle
-        ]);
-        session()->flash('message','Te has postulado');
+        if(!empty($this->driver->id)){
+
+            Offer::create([
+                'driver_id' => $this->driver->id,
+                'vehicle_id' => $vehicle
+            ]);
+            session()->flash('message','Te has postulado');
+        }else{
+            session()->flash('messageWarn','Usted no es un conductor para aplicar');
+        }
 
     }
 
