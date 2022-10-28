@@ -8,20 +8,23 @@
                             {{ __('Conductores') }}
                         </h2>
                         @foreach ($drivers as $item)
-                            <div class="grid grid-cols-2 divide-x py-3">
-                                <div class="flex flex-col ...">
-                                    <div>{{$item->name.' '.$item->lastname}}</div>
-                                    <div>{{$item->town }}</div>
+                            @if ($item->id == 1)
+                                <div class="grid grid-cols-2 divide-x py-3">
+                                    <div class="flex flex-col ...">
+                                        <div>{{$item->name.' '.$item->lastname}}</div>
+                                        <div>{{$item->town }}</div>
+                                    </div>
+                                    <div>
+                                        <img src="{{env('APP_URL').'/storage/'.$item->drivers->pluck('image')->first()}}" alt="Lamp" width="70" height="70">
+                                    </div>
                                 </div>
                                 <div>
-                                    <img src="{{env('APP_URL').'/storage/'.$item->drivers->pluck('image')->first()}}" alt="Lamp" width="70" height="70">
+                                    <a class="focus:outline-none text-white bg-yellow-400 font-medium rounded-lg text-sm px-5 py-2  dark:focus:ring-yellow-900"href="{{env('APP_URL').'/storage/'.$item->drivers->pluck('annexes')->first()->pluck('file')->first()}}" target="_blank">
+                                        Ver hoja de vida
+                                    </a>
                                 </div>
-                            </div>
-                            <div>
-                                <a class="focus:outline-none text-white bg-yellow-400 font-medium rounded-lg text-sm px-5 py-2  dark:focus:ring-yellow-900"href="{{env('APP_URL').'/storage/'.$item->drivers->pluck('annexes')->first()->pluck('file')->first()}}" target="_blank">
-                                    Ver hoja de vida
-                                </a>
-                            </div>
+                            @endif
+
                         @endforeach
                     </div>
                     <div class="flex flex-col">

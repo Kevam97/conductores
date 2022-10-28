@@ -45,9 +45,11 @@ class OfferView extends Component
     {
         //dd($this->driver);
         return view('livewire.offer-view',[
-            'drivers' => User::role('Conductor')->with(['drivers.annexes' => function($query)
+            'drivers' => User::role('Conductor')->with([
+                'drivers.annexes' => function($query)
                                     {
-                                        $query->where('comment','curriculum');
+                                        $query->where('comment','curriculum')
+                                              ;
                                     }])->paginate(5),
             'owners' => Vehicle::with('images')->paginate(5)
         ]);
