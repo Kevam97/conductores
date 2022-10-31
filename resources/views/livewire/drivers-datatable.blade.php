@@ -9,18 +9,25 @@
                         <div class="flex flex-col md:flex-row md:max-w-xl rounded-lg bg-white shadow-lg">
                             {{ $vehicle->vehicle_registration }}
                             <div class="p-6 flex flex-col justify-start">
+                                @if (!empty($vehicle->driver))
+                                <div clasl="inline-block ">
+                                    Conductor actual:  {{ $vehicle->driver->user->name.' '.$vehicle->driver->user->lastname }}
+                                    <form wire:submit.prevent="driver({{$vehicle->id  }})">
+                                        <button class="content-center inline-block px-5 py-2 bg-red-400 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-orange-400 hover:shadow-lg focus:bg-orange-400 focus:shadow-lg focus:outline-none focus:ring-0">
+                                            Dar de baja
+                                        </button>
+                                    </form>
+                                </div>
+                                @endif
                                 <div class="flex flex-col">
 
                                     @foreach ($vehicle->offers as $offer)
-                                    <div class="flex row ">
+                                    <div class="grid grid-cols-2">
                                         <div class="text-sm border text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                            {{ $offer->driver->user->name.' '.$offer->driver->user->lastname }}
-
-                                        </div>
-                                        <div class="border  py-4 ">
-                                            <a class="inline-block px-5 py-2 bg-yellow-400 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-orange-400 hover:shadow-lg focus:bg-orange-400 focus:shadow-lg focus:outline-none focus:ring-0" href="{{env('APP_URL').'/storage/'.$offer->driver->annexes->where('comment','curriculum')->first()->file}}" target="_blank">
-                                                hoja de vida
+                                            <a class="text-blue-600" href="{{route('getdriver',['user' => $offer->driver->user->document])  }}">
+                                                {{ $offer->driver->user->name.' '.$offer->driver->user->lastname }}
                                             </a>
+
                                         </div>
                                         <div  class="border px-6 py-4 ">
                                             <form wire:submit.prevent="submit({{$vehicle->id}},{{$offer->driver->id}})" >

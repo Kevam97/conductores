@@ -35,6 +35,13 @@ trait EpaycoTrait
         return $sub;
     }
 
+    public function cancelSubscription($idSus){
+
+        $sub = $this->epayco->subscriptions->cancel($idSus);
+
+        return $sub;
+    }
+
     public function paySubscriptions(User $user,  $plan, $card){
         $sub = $this->epayco->subscriptions->charge(array(
             "id_plan" => $plan,

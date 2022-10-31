@@ -21,6 +21,15 @@ class DriversDatatable extends Component
     //     $this->vehicles = Vehicle::with('offers')->where('owner_id',$this->owner->id)->paginate(5);
     // }
 
+    public  function driver($vehicleId)
+    {
+        $vehicle = Vehicle::find($vehicleId);
+        $vehicle->driver_id = null;
+        $vehicle->save();
+
+        session()->flash('message','Ha dado de baja al conductor');
+
+    }
     public function submit($vehicleId, $driverId)
     {
         $vehicle = Vehicle::find($vehicleId);

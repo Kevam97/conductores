@@ -113,7 +113,7 @@
                                                     <strong>{{ $courses->name }}</strong>
 
                                                 </div>
-                                                <p class="text-xs"> Realizado en el {{$courses->place  }} en la fecha {{ $courses->date->toDateTimeString()}} con el titulo obtenido de {{ $courses->title }}</p>
+                                                <p class="text-xs"> Realizado en el {{$courses->place  }} en la fecha {{ $courses->date->toDateString()}} con el titulo obtenido de {{ $courses->title }}</p>
                                             </li>
                                         @endforeach
 
