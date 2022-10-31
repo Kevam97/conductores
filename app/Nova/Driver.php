@@ -50,16 +50,16 @@ class Driver extends Resource
             ID::make()->sortable(),
             BelongsTo::make('User'),
             BelongsTo::make('HealthCompany'),
-            Text::make('experience year'),
-            Text::make('driving license'),
-            Date::make('license expiration'),
-            Boolean::make('status'),
+            Text::make(__('experience year'),'experience_year'),
+            Text::make(__('driving license'),'driving_license'),
+            Date::make(__('license expiration'),'license_expiration'),
+            Boolean::make(__('status'),'status'),
 
-            HasMany::make('Annexes'),
-            HasMany::make('PersonalReferences'),
-            HasMany::make('WorkReferences'),
-            HasMany::make('Courses'),
-            HasMany::make('Ratings'),
+            HasMany::make(__('Annexes'),'Annexes',Annex::class),
+            HasMany::make(__('PersonalReferences'),'PersonalReferences',PersonalReference::class),
+            HasMany::make(__('WorkReferences'),'WorkReferences',WorkReference::class),
+            HasMany::make(__('Courses'),'Courses', Course::class),
+            HasMany::make(__('Ratings'),'Ratings', Rating::class ),
         ];
     }
 
@@ -105,5 +105,15 @@ class Driver extends Resource
     public function actions(NovaRequest $request)
     {
         return [];
+    }
+
+    public static function singularLabel()
+    {
+        return 'Conductor';
+    }
+
+    public static function label()
+    {
+        return 'Conductores';
     }
 }

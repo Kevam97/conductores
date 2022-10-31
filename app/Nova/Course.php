@@ -47,10 +47,10 @@ class Course extends Resource
     {
         return [
             ID::make()->sortable(),
-            Text::make('name'),
-            Text::make('place'),
-            Date::make('date'),
-            Text::make('title'),
+            Text::make(__('name'),'name'),
+            Text::make(__('place'),'place'),
+            Date::make(__('date'),'date'),
+            Text::make(__('title'),'title'),
 
         ];
     }
@@ -97,5 +97,15 @@ class Course extends Resource
     public function actions(NovaRequest $request)
     {
         return [];
+    }
+
+    public static function singularLabel()
+    {
+        return 'Curso';
+    }
+
+    public static function label()
+    {
+        return 'Cursos';
     }
 }

@@ -4,6 +4,7 @@ namespace App\Nova;
 
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Rating extends Resource
@@ -42,6 +43,7 @@ class Rating extends Resource
     {
         return [
             ID::make()->sortable(),
+            Text::make(__('comment'),'comment')
 
         ];
     }
@@ -89,4 +91,15 @@ class Rating extends Resource
     {
         return [];
     }
+
+    public static function singularLabel()
+    {
+        return 'puntaje';
+    }
+
+    public static function label()
+    {
+        return 'puntajes';
+    }
+
 }

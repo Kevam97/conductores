@@ -97,4 +97,9 @@ class Bill extends Resource
     {
         return [];
     }
+
+    public static function singularLabel()
+    {
+        return 'Factura';
+    }
 }

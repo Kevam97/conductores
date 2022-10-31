@@ -13,7 +13,7 @@ class EditVehicle extends Component
 {
     use WithFileUploads;
 
-    public $brand, $line, $model, $plate, $images, $payout, $dayOff;
+    public $brand, $line, $model, $plate, $images, $payout, $dayOff, $status;
     public $benefits, $company, $requirements, $brands=[], $lines =[];
     public Vehicle $vehicle;
 
@@ -42,6 +42,7 @@ class EditVehicle extends Component
         $this->benefits = $this->vehicle->social_benefits;
         $this->company = $this->vehicle->company;
         $this->requirements = $this->vehicle->requirements;
+        $this->status = $this->vehicle->status;
 
         $this->brands = Brand::all();
         $this->lines =  Line::all();

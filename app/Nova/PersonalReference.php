@@ -43,11 +43,11 @@ class PersonalReference extends Resource
     {
         return [
             ID::make()->sortable(),
-            Text::make('name'),
-            Text::make('lastname'),
-            Text::make('phone'),
-            Text::make('kinship'),
-            Text::make('occupation')
+            Text::make(__('name'),'name'),
+            Text::make(__('lastname'),'lastname'),
+            Text::make(__('phone'),'phone'),
+            Text::make(__('kinship'),'kinship'),
+            Text::make(__('occupation'),'occupation')
         ];
     }
 
@@ -93,5 +93,15 @@ class PersonalReference extends Resource
     public function actions(NovaRequest $request)
     {
         return [];
+    }
+
+    public static function singularLabel()
+    {
+        return 'Referencia personal';
+    }
+
+    public static function label()
+    {
+        return 'Referencia personales';
     }
 }

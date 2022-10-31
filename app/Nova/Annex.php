@@ -46,7 +46,7 @@ class Annex extends Resource
         return [
             ID::make()->sortable(),
             File::make('file'),
-            Text::make('comment'),
+            Text::make(__('comment'),'comment'),
 
         ];
     }
@@ -93,5 +93,15 @@ class Annex extends Resource
     public function actions(NovaRequest $request)
     {
         return [];
+    }
+
+    public static function singularLabel()
+    {
+        return 'Anexo';
+    }
+
+    public static function label()
+    {
+        return 'Anexos';
     }
 }

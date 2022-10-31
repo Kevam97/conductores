@@ -44,12 +44,12 @@ class WorkReference extends Resource
     {
         return [
             ID::make()->sortable(),
-            Text::make('company'),
-            Text::make('phone'),
-            Text::make('reason_living'),
-            Text::make('contact'),
-            Text::make('occupation_contact'),
-            Text::make('others'),
+            Text::make(__('company'),'company'),
+            Text::make(__('phone'),'phone'),
+            Text::make(__('reason_living'),'reason_living'),
+            Text::make(__('contact'),'contact'),
+            Text::make(__('occupation_contact'),'occupation_contact'),
+            Text::make(__('others'),'others'),
 
 
         ];
@@ -97,5 +97,15 @@ class WorkReference extends Resource
     public function actions(NovaRequest $request)
     {
         return [];
+    }
+
+    public static function singularLabel()
+    {
+        return 'Referencia labora';
+    }
+
+    public static function label()
+    {
+        return 'Referencia laborales';
     }
 }

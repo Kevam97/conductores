@@ -64,16 +64,16 @@
                         <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
                           Dia de descanso
                         </label>
-                       <select wire:model='dayOff' class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" name="" id="">
-                            <option value="" selected hidden> Seleccione una opcion</option>
-                            <option value="Lunes">Lunes</option>
-                            <option value="Martes">Martes</option>
-                            <option value="Miercoles">Miercoles</option>
-                            <option value="Jueves">Jueves</option>
-                            <option value="Viernes">Viernes</option>
-                            <option value="Sabado">Sabado</option>
-                            <option value="Domingo">Domingo</option>
-                       </select>
+                        <select wire:model='dayOff' class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" name="" id="">
+                                <option value="" selected hidden> Seleccione una opcion</option>
+                                <option value="Lunes">Lunes</option>
+                                <option value="Martes">Martes</option>
+                                <option value="Miercoles">Miercoles</option>
+                                <option value="Jueves">Jueves</option>
+                                <option value="Viernes">Viernes</option>
+                                <option value="Sabado">Sabado</option>
+                                <option value="Domingo">Domingo</option>
+                        </select>
                         @error('dayOff') <span class="text-red-500 text-xs italic">{{$message }}</span> @enderror
                       </div>
                       <div class="w-full px-3">
@@ -103,6 +103,17 @@
                         <input wire:model='company' class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-zip" type="text" placeholder="Empresa">
                         @error('company') <span class="text-red-500 text-xs italic">{{$message }}</span> @enderror
                       </div>
+                    </div>
+                    <div class="w-full px-3">
+                        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
+                          Estado
+                        </label>
+                        <select wire:model='status' class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200  rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" name="" id="">
+                                <option selected hidden> Seleccione una opcion</option>
+                                <option value="0">No publicado</option>
+                                <option value="1">Publicado</option>
+                        </select>
+                        @error('status') <span class="text-red-500 text-xs italic">{{$message }}</span> @enderror
                     </div>
                     <div class="flex flex-wrap -mx-3 mb-6">
                         <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">

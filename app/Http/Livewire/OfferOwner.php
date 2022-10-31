@@ -45,7 +45,7 @@ class OfferOwner extends Component
     {
         //dd($this->driver);
         return view('livewire.offer-owner',[
-            'owners' => Vehicle::with('images')->paginate(2)
+            'owners' => Vehicle::where('status',1)->with('images')->paginate(2)
         ]);
     }
 }

@@ -51,25 +51,25 @@ class User extends Resource
         return [
             ID::make()->sortable(),
 
-            Text::make('Name')
+            Text::make(__('Name'),'name')
                 ->sortable()
                 ->rules('required', 'max:255'),
 
-            Text::make('Lastname')
+            Text::make(__('lastname'),'lastname')
                 ->sortable()
                 ->rules('required', 'max:255'),
 
-            Text::make('Document Type')
+            Text::make(__('Document Type'),'documentType')
                 ->rules('required', 'max:255'),
 
-            Text::make('Document')
+            Text::make(__('Document'), 'document')
                 ->sortable()
                 ->rules('required', 'max:255'),
 
-            Text::make('Address')
+            Text::make(__('Address'),'address')
                 ->rules('required', 'max:255'),
 
-            Text::make('Phone')
+            Text::make(__('phone'),'phone')
                 ->rules('required', 'max:255'),
 
             Text::make('Email')
@@ -78,18 +78,18 @@ class User extends Resource
                 ->creationRules('unique:users,email')
                 ->updateRules('unique:users,email,{{resourceId}}'),
 
-            Text::make('Country')
+            Text::make(__('country'),'country')
                 ->rules('required', 'max:255'),
 
-            Text::make('Town')
+            Text::make(__('town'), 'town')
                 ->rules('required', 'max:255'),
 
-            Date::make('Birth')
+            Date::make(__('birth'),'birth')
                 ->rules('required', 'max:255'),
 
-            HasMany::make('Bills'),
+            HasMany::make(__('bills'),'Bills', Bill::class),
 
-            Password::make('Password')
+            Password::make(__('Password'),'Password')
                 ->onlyOnForms()
                 ->creationRules('required', Rules\Password::defaults())
                 ->updateRules('nullable', Rules\Password::defaults()),

@@ -13,8 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('drivers', function (Blueprint $table) {
-            $table->string("comment")->nullable();
+        Schema::table('vehicles', function (Blueprint $table) {
+            $table->boolean("status")->default(1)->comment('0: inactive, 1: active');
         });
     }
 
