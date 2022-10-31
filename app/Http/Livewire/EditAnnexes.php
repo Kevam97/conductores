@@ -13,6 +13,11 @@ class EditAnnexes extends Component
     public $file,$filePrev ,$comment, $commentPrev;
     public Annexe $annexe;
 
+    public  $rules =[
+        'file' => 'mimes:pdf,png,jpg',
+        'comment' => 'required'
+    ];
+
     public function mount()
     {
         $this->filePrev = $this->annexe->file;

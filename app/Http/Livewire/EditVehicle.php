@@ -17,6 +17,21 @@ class EditVehicle extends Component
     public $benefits, $company, $requirements, $brands=[], $lines =[];
     public Vehicle $vehicle;
 
+    public  $rules =[
+        'model' => 'required',
+        'plate' => 'required',
+        'images'  =>
+            'array|min:1|max:5',
+			'images.*' => 'image|max:10240' // 10MB Ma
+        ,
+        'payout' => 'required',
+        'dayOff' => 'required',
+        'benefits' => 'required',
+        'company' => 'required',
+        'requirements' => 'required'
+    ];
+
+
     public function mount(){
         $this->brand = $this->vehicle->brand->name;
         $this->line = $this->vehicle->line->name;

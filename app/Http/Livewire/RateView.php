@@ -11,15 +11,21 @@ use Livewire\Component;
 class RateView extends Component
 {
     public User $user;
-    public $rate;
+    public $rate, $comment;
+
+    public $rules = [
+        'comment' => 'required'
+    ];
 
     public function submit(){
         $driver = Driver::where('user_id',$this->user->id)->first();
-
+        $stars = (empty($this->rate)) ? 0 : $this->rate ;
+        $this->validate();
         if ($driver) {
             Rating::create([
                 'driver_id' =>$driver->id,
-                'stars' =>$this->rate,
+                'comment'=>$this->comment,
+                'stars' => $stars,
                 'ip' =>request()->ip()
             ]);
             session()->flash('message','Calificacion guardada');

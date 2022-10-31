@@ -16,8 +16,9 @@ class RateController extends Controller
     }
 
     public function topTen(){
-       //$drivers = Driver::with('ratings')->avg('stars')->get();
-       $rates = Rating::select('driver_id',\DB::raw("avg(stars) as stars ") )->groupBy('driver_id')->orderby( 'stars','desc')->with('driver.user')->take(10)->get();
+       $rates = Rating::select('driver_id',\DB::raw("avg(stars) as stars "), \DB::raw("count(stars) as arrivals"))->groupBy('driver_id')->orderby( 'stars','desc')->with('driver.user')->take(10)->get();
+    //    dd($rates);
+
        return view('top-ten', compact('rates'));
     }
 }

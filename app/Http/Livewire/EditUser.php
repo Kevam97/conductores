@@ -29,12 +29,15 @@ class EditUser extends Component
         'name' => 'required',
         'lastname' => 'required',
         'docType' => 'required',
-        'doc' => 'required',
+        'doc' => 'required|unique:users,document',
         'address' => 'required',
+        'birth'  => 'required',
         'phone' => 'required',
-        'email' => 'required',
+        'email' => 'required|unique:users,email',
         'country' => 'required',
-        'town' => 'required'
+        'town' => 'required',
+        'password'  =>'required',
+        'role'=>'required'
 
     ];
 

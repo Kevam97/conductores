@@ -12,7 +12,8 @@ class DriverForm extends Component
 {
     use WithFileUploads;
 
-    public $healthCompany,$yearsExperience ,$license, $dateLicense, $image;
+    public $healthCompany,$yearsExperience ,$license, $dateLicense, $image ;
+    public $facebook, $twitter, $instagram, $aboutMe;
     public $healthCompanies =[];
 
     public function mount(){
@@ -26,7 +27,12 @@ class DriverForm extends Component
         'dateLicense' => 'required',
         'image' => [
             'required',
-            'mimes:png,jpg']
+            'mimes:png,jpg'],
+        'facebook' => 'required',
+        'twitter' => 'required',
+        'instagram' => 'required',
+        'aboutMe'=> 'required',
+
     ];
 
     public function submit(){
@@ -38,7 +44,11 @@ class DriverForm extends Component
             'experience_year'  => $this->yearsExperience,
             'driving_license' =>  $this->license,
             'license_expiration' =>  $this->dateLicense,
-            'image' => $url
+            'image' => $url,
+            'facebook' => $this->facebook,
+            'twitter' => $this->twitter,
+            'instagram' => $this->instagram,
+            'about_me'=> $this->aboutMe,
         ]);
         session()->flash('message','Se ha registrado el conductor correctamente');
         $this->reset();

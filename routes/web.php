@@ -40,6 +40,8 @@ Route::get('/editdashboard',[EditDashboardController::class,'index']
 Route::get('/qr',[EditDashboardController::class,'qr']
 )->middleware(['auth', 'verified',  'permission:driver_create'])->name('qr');
 
+Route::get('/driver/{user:document}',[EditOwnerController::class,'getDriver']
+)->middleware(['auth', 'verified'])->name('getdriver');
 
 Route::get('/editowner',[EditOwnerController::class,'index']
 )->middleware(['auth', 'verified',  'permission:owner_create'])->name('editowner');

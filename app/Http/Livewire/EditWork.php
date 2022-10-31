@@ -10,6 +10,17 @@ class EditWork extends Component
     public  $company, $phone, $starDate, $endDate, $reason, $contact, $ocupation, $others;
     public WorkReference $workReference;
 
+    public  $rules =[
+        'company' => 'required',
+        'phone' => 'required',
+        'starDate' => 'required',
+        'endDate' => 'required',
+        'reason'  => 'required',
+        'contact' => 'required',
+        'ocupation' => 'required',
+        'others' => 'required',
+    ];
+
     public function mount()
     {
         $this->company = $this->workReference->company;

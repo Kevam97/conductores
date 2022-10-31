@@ -33,19 +33,47 @@
                         @error('image') <span class="text-red-500 text-xs italic">{{$message }}</span> @enderror
                     </div>
                     <div class="w-full px-3">
-                      <div class="w-full px-3">
                         <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
-                          Licencia de conducción
+                            Licencia de conducción
                         </label>
-                        <input wire:model="license" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-password" type="Licencia">
+                        <input wire:model="license" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-password" type="text">
                         @error('license') <span class="text-red-500 text-xs italic">{{$message }}</span> @enderror
-                      </div>
+                    </div>
+                    <div class="w-full px-3">
+                        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
+                            Acerca de mi
+                        </label>
+                        <textarea wire:model="aboutMe" maxlength="495" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="about-me">
+                        </textarea>
+                        @error('about_me') <span class="text-red-500 text-xs italic">{{$message }}</span> @enderror
+                    </div>
+                     <div class="w-full px-3">
                           <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
-                            Fecha de expiracion de la licencia
+                              Fecha de expiracion de la licencia
                           </label>
                           <input wire:model="dateLicense" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-password" type="date">
                           @error('dateLicense') <span class="text-red-500 text-xs italic">{{$message }}</span> @enderror
                       </div>
+                    </div>
+                    <div class="flex flex-wrap -mx-3 mb-2">
+                        <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+                          <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-city">
+                            Facebook
+                          </label>
+                          <input wire:model="facebook" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-city" type="text" placeholder="link">
+                        </div>
+                        <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-city">
+                            Instagram
+                            </label>
+                            <input wire:model="instagram" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-city" type="text" placeholder="link">
+                          </div>
+                        <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+                          <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-zip">
+                            Twitter
+                          </label>
+                          <input wire:model="twitter"  class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-zip" type="text" placeholder="link">
+                        </div>
                     </div>
                     <div class="flex flex-wrap -mx-3 mb-6">
                         <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">

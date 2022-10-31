@@ -28,27 +28,42 @@ class SusbscriptionForm extends Component
         'card' => 'required',
     ];
 
+    private function form(){
+        if(!empty($this->user->drivers[0]->annexes) && !empty($this->user->drivers[0]->personalReferences) && !empty($this->user->drivers[0]->workReferences) && !empty($this->user->drivers[0]->courses))
+        {
+            if(count($this->user->drivers[0]->annexes) == 3 && count($this->user->drivers[0]->personalReferences) == 3 && count($this->user->drivers[0]->workReferences) == 3 && count($this->user->drivers[0]->courses) == 3){
+                return true;
+            }else return false;
+        }else{
+            return false;
+        }
+    }
+
     public function submit()
     {
         $this->validate();
-        $this->plan = ($this->user->hasRole('Conductor'))  ? 'Conductor' : 'Propietario';
-        //dd($this->plan);
-        $sub = $this->subscriptions($this->user,$this->plan,$this->card );
-        if($sub->status){
-            $this->user->subscription = $sub->id;
-            $this->user->save();
-        }
-        $pay = $this->paySubscriptions($this->user,$this->plan,$this->card);
-        if(empty($pay->status)){
-            Bill::create([
-                'user_id' => $this->user->id,
-                'status' => 1,
-                'cutoff' => $pay->data->fecha
-            ]);
-            session()->flash('message','Te has suscrito correctamente');
+        $form = $this->form();
+        if($form){
+            $this->plan = ($this->user->hasRole('Conductor'))  ? 'Conductor' : 'Propietario';
+            $sub = $this->subscriptions($this->user,$this->plan,$this->card );
+            if($sub->status){
+                $this->user->subscription = $sub->id;
+                $this->user->save();
+            }
+            $pay = $this->paySubscriptions($this->user,$this->plan,$this->card);
+            if(empty($pay->status)){
+                Bill::create([
+                    'user_id' => $this->user->id,
+                    'status' => 1,
+                    'cutoff' => $pay->data->fecha
+                ]);
+                session()->flash('message','Te has suscrito correctamente');
 
+            }else{
+                session()->flash('messageError',$pay->data->errors);
+            }
         }else{
-            session()->flash('messageError',$pay->data->errors);
+            session()->flash('messageError','Debes completar regsitrar toda la informacion antes de suscribirte');
         }
     }
 

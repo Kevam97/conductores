@@ -4,5 +4,16 @@
             {{ __('Ofertas') }}
         </h2>
     </x-slot>
-    <livewire:offer-view />
+    <div class="py-2">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 bg-white border-b border-gray-200">
+                    <div class="grid grid-cols-2 gap-10">
+                        <livewire:offer-driver />
+                        <livewire:offer-owner />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </x-app-layout>

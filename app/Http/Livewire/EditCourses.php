@@ -10,6 +10,13 @@ class EditCourses extends Component
     public  $name, $place, $date, $title;
     public Course $course;
 
+    public  $rules =[
+        'name' => 'required',
+        'date' => 'required',
+        'place' => 'required',
+        'title' => 'required'
+    ];
+
     public function mount(){
         $this->name = $this->course->name;
         $this->place = $this->course->place;

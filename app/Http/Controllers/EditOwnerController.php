@@ -22,4 +22,11 @@ class EditOwnerController extends Controller
 
         return view('edit-owner', compact('user','owner'));
     }
+
+    public function getDriver(User $user){
+        $user->load('drivers');
+        $driver =$user->drivers->first();
+       # dd($driver );
+        return view('view-driver',compact('user','driver'));
+    }
 }

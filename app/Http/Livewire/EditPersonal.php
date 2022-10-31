@@ -10,6 +10,14 @@ class EditPersonal extends Component
     public $name, $lastname, $phone, $kinship, $occupation;
     public PersonalReference $reference;
 
+    public  $rules =[
+        'name' => 'required',
+        'lastname' => 'required',
+        'phone' => 'required',
+        'kinship' => 'required',
+        'occupation' => 'required',
+    ];
+
     public function mount()
     {
        $this->name = $this->reference->name;
