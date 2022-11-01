@@ -10,6 +10,10 @@ class Rating extends Model
     use HasFactory;
     protected $guarded = ['id'];
 
+    protected $casts =[
+        'created_at' => 'date'
+    ];
+
     public function driver()
     {
         return $this->belongsTo(Driver::class);

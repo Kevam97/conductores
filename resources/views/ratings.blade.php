@@ -7,29 +7,24 @@
         </x-slot>
         <livewire:rate-view :user="$user" />
         <div id="carouselExampleSlidesOnly" class="carousel slide relative" data-bs-ride="carousel">
-            <div class="carousel-inner relative w-full overflow-hidden">
-              <div class="carousel-item active relative float-left w-full">
-                <img
-                  src="https://mdbcdn.b-cdn.net/img/new/slides/041.webp"
-                  class="block w-full"
-                  alt="Wild Landscape"
-                />
-              </div>
-              <div class="carousel-item relative float-left w-full">
-                <img
-                  src="https://mdbcdn.b-cdn.net/img/new/slides/042.webp"
-                  class="block w-full"
-                  alt="Camera"
-                />
-              </div>
-              <div class="carousel-item relative float-left w-full">
-                <img
-                  src="https://mdbcdn.b-cdn.net/img/new/slides/043.webp"
-                  class="block w-full"
-                  alt="Exotic Fruits"
-                />
-              </div>
+            <div class="carousel-inner relative h-40 w-25 overflow-hidden">
+                <div class="carousel-item active relative float-left h-40 w-25">
+                    <img
+                    src="https://mdbcdn.b-cdn.net/img/new/slides/041.webp"
+                    class="block w-full"
+                    alt="Wild Landscape"
+                    />
+                </div>
+                @foreach ($publications as $publication)
+                <div class="carousel-item relative float-left h-40 w-25">
+                        <img
+                        src="{{ env('APP_URL').'/storage/'.$publication->file}}"
+
+                        alt="Exotic Fruits"
+                        />
+                </div>
+                @endforeach
             </div>
-          </div>
+        </div>
     </x-auth-card>
 </x-guest-layout>

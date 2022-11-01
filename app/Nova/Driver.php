@@ -10,6 +10,8 @@ use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\HasMany;
+use Laravel\Nova\Query\Search\SearchableRelation;
+
 
 
 
@@ -35,8 +37,13 @@ class Driver extends Resource
      * @var array
      */
     public static $search = [
-        'id',
+        'id', 'user.name', 'user.lastname'
     ];
+
+    // public static function searchableColumns()
+    // {
+    // return ['id', new SearchableRelation('user','name','lastname')];
+    // }
 
     /**
      * Get the fields displayed by the resource.
@@ -48,8 +55,8 @@ class Driver extends Resource
     {
         return [
             ID::make()->sortable(),
-            BelongsTo::make('User'),
-            BelongsTo::make('HealthCompany'),
+            BelongsTo::make(__('user'),'user',User::class),
+            BelongsTo::make(__('healthCompany'),'healthCompany',HealthCompany::class),
             Text::make(__('experience year'),'experience_year'),
             Text::make(__('driving license'),'driving_license'),
             Date::make(__('license expiration'),'license_expiration'),
@@ -104,7 +111,12 @@ class Driver extends Resource
      */
     public function actions(NovaRequest $request)
     {
-        return [];
+        return [
+            (new Actions\DriverStatus)
+            ->confirmText('¿Estas seguro de cambiar el estado del conductor?')
+            ->confirmButtonText('Sí')
+            ->cancelButtonText("No"),
+        ];
     }
 
     public static function singularLabel()

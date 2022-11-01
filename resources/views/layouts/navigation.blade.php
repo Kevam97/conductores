@@ -37,11 +37,18 @@
                         {{ __('Tus vehiculos') }}
                     </x-nav-link>
                     @endcan
-                    <x-nav-link :href="route('subs')" :active="request()->routeIs('subs')">
-                        {{ __('Subscripciones y pagos') }}
-                    </x-nav-link>
+                    @can('offer_view')
                     <x-nav-link :href="route('offers')" :active="request()->routeIs('offers')">
                         {{ __('Oferta') }}
+                    </x-nav-link>
+                    @endcan
+                    @can('publisher_create')
+                    <x-nav-link :href="route('pubs')" :active="request()->routeIs('pubs')">
+                        {{ __('Publicar') }}
+                    </x-nav-link>
+                    @endcan
+                    <x-nav-link :href="route('subs')" :active="request()->routeIs('subs')">
+                        {{ __('Subscripciones y pagos') }}
                     </x-nav-link>
                 </div>
             </div>
@@ -69,7 +76,7 @@
                             <x-dropdown-link :href="route('logout')"
                                     onclick="event.preventDefault();
                                                 this.closest('form').submit();">
-                                {{ __('Log Out') }}
+                                {{ __('Cerrar sesion') }}
                             </x-dropdown-link>
                         </form>
                     </x-slot>
@@ -91,8 +98,43 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
+            <x-nav-link :href=" 'https://conductores10.com/'" >
+                {{ __('Home') }}
+            </x-nav-link>
+            @can('driver_create')
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                {{ __('Dashboard') }}
+                {{ __('Inscripcion conductor') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('editdashboard')" :active="request()->routeIs('editdashboard')">
+                {{ __('Editar Inscripcion') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('qr')" :active="request()->routeIs('qr')">
+                {{ __('Mi QR') }}
+            </x-responsive-nav-link>
+            @endcan
+            @can('owner_create')
+            <x-responsive-nav-link :href="route('owner')" :active="request()->routeIs('owner')">
+                {{ __('Inscripcion propietario') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('editowner')" :active="request()->routeIs('editowner')">
+                {{ __('Editar Inscripcion') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('proponents')" :active="request()->routeIs('proponents')">
+                {{ __('Tus vehiculos') }}
+            </x-responsive-nav-link>
+            @endcan
+            @can('offer_view')
+            <x-responsive-nav-link :href="route('offers')" :active="request()->routeIs('offers')">
+                {{ __('Oferta') }}
+            </x-responsive-nav-link>
+            @endcan
+            @can('publisher_create')
+            <x-responsive-nav-link :href="route('pubs')" :active="request()->routeIs('pubs')">
+                {{ __('Publicar') }}
+            </x-responsive-nav-link>
+            @endcan
+            <x-responsive-nav-link :href="route('subs')" :active="request()->routeIs('subs')">
+                {{ __('Subscripciones y pagos') }}
             </x-responsive-nav-link>
         </div>
 

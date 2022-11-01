@@ -7,7 +7,7 @@
               @foreach ($rates as $key => $rate)
               <div class="flex justify-center">
                   <div class="rounded-lg shadow-lg bg-slate-300 max-w-sm">
-                      <img class="rounded-t-lg" src="{{env('APP_URL').'/storage/'.$rate->driver->image }}" alt=""/>
+                      <img class="rounded-lg w-60 h-80 mb-4 mx-auto p-2" src="{{env('APP_URL').'/storage/'.$rate->driver->image }}" alt=""/>
                       <div class="p-6">
                           <h4 class="text-gray-900 text-xl font-medium mb-2  text-center	"># {{$key+1 }}</h4>
                           <h5 class="text-gray-900 text-xl font-medium mb-2 text-center">{{$rate->driver->user->name.' '.$rate->driver->user->lastname}}</h5>

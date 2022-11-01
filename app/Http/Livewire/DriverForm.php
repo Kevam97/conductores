@@ -38,20 +38,27 @@ class DriverForm extends Component
     public function submit(){
         $this->validate();
         $url = $this->image->store('image','public');
-        Driver::create([
-            'user_id' => Auth::id(),
-            'health_company_id' =>  $this->healthCompany,
-            'experience_year'  => $this->yearsExperience,
-            'driving_license' =>  $this->license,
-            'license_expiration' =>  $this->dateLicense,
-            'image' => $url,
-            'facebook' => $this->facebook,
-            'twitter' => $this->twitter,
-            'instagram' => $this->instagram,
-            'about_me'=> $this->aboutMe,
-        ]);
-        session()->flash('message','Se ha registrado el conductor correctamente');
+        $driver = Driver::where('user_id',Auth::id())->first();
+        if(empty($driver)){
+
+            Driver::create([
+                'user_id' => Auth::id(),
+                'health_company_id' =>  $this->healthCompany,
+                'experience_year'  => $this->yearsExperience,
+                'driving_license' =>  $this->license,
+                'license_expiration' =>  $this->dateLicense,
+                'image' => $url,
+                'facebook' => $this->facebook,
+                'twitter' => $this->twitter,
+                'instagram' => $this->instagram,
+                'about_me'=> $this->aboutMe,
+            ]);
+            session()->flash('message','Se ha registrado el conductor correctamente');
+        }else{
+            session()->flash('messageWarn','Ya estas registrado recarga la pagina');
+        }
         $this->reset();
+        $this->mount();
 
     }
 

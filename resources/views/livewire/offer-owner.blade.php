@@ -1,4 +1,4 @@
-<div class="flex justify-center flex-col px-6 rounded-lg shadow-lg bg-neutral-900 max-w ">
+<div class="flex flex-col px-6 rounded-lg shadow-lg bg-neutral-900 max-w ">
     <h2 class="font-semibold text-xl text-white  text-center leading-tight">
         {{ __('Propietarios') }}
     </h2>
@@ -10,15 +10,15 @@
                     <span class="underline text-slate-600	 mb-2 text-sm font-medium dark:text-gray-300 ">PLACA:</span>  {{$item->vehicle_registration }}
                 </div>
                 <div>
-                    <span class="underline text-slate-600	 mb-2 text-sm font-medium dark:text-gray-300 ">LIQUIDACION:</span>  {{$item->payout }}
+                    <span class="underline text-slate-600	 mb-2 text-sm font-medium dark:text-gray-300 ">LIQUIDACION:</span>  {{ number_format((int)$item->payout) }}
                 </div>
                 <div>
                     <span class="underline text-slate-600	 mb-2 text-sm font-medium dark:text-gray-300 ">OBSERVACIONES:</span>  {{$item->requirements }}
                 </div>
             </div>
             <div id="{{'carouselOffers'.$item->id}}" class="carousel slide relative" data-bs-ride="carousel">
-                <div class="carousel-inner relative w-full overflow-hidden">
-                    <div class="carousel-item active relative float-left w-full">
+                <div class="carousel-inner block w-full overflow-hidden">
+                    <div class="carousel-item active relative float-left h-full w-full">
                         <img
                             src="https://conductores10.com/wp-content/uploads/2022/02/logo-white-4.png"
                             class="block w-full "

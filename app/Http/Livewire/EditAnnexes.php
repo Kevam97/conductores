@@ -24,12 +24,11 @@ class EditAnnexes extends Component
         $this->commentPrev = $this->annexe->comment;
     }
     public function submit(){
+        $this->comment = (empty($this->comment)) ?  $this->commentPrev : $this->comment ;
         $url = $this->file->store('documents','public');
         $this->annexe->file = $url;
         $this->annexe->comment =  $this->comment;
         $this->annexe->save();
-
-        $this->reset();
         $this->mount();
 
         session()->flash('message','Se ha actulizado');

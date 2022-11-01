@@ -20,6 +20,7 @@ class EditUser extends Component
         $this->doc = $this->user->document;
         $this->address = $this->user->address;
         $this->phone = $this->user->phone;
+        $this->birth = $this->user->birth->toDateString();
         $this->email = $this->user->email;
         $this->country = $this->user->country;
         $this->town = $this->user->town;
@@ -29,15 +30,13 @@ class EditUser extends Component
         'name' => 'required',
         'lastname' => 'required',
         'docType' => 'required',
-        'doc' => 'required|unique:users,document',
+        'doc' => 'required',
         'address' => 'required',
         'birth'  => 'required',
         'phone' => 'required',
-        'email' => 'required|unique:users,email',
+        'email' => 'required',
         'country' => 'required',
         'town' => 'required',
-        'password'  =>'required',
-        'role'=>'required'
 
     ];
 

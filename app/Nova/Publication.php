@@ -3,22 +3,21 @@
 namespace App\Nova;
 
 use Illuminate\Http\Request;
-use Laravel\Nova\Fields\ID;
-use Laravel\Nova\Http\Requests\NovaRequest;
 use Laravel\Nova\Fields\BelongsTo;
-use Laravel\Nova\Fields\HasMany;
+use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Fields\File;
 use Laravel\Nova\Fields\Boolean;
 
+use Laravel\Nova\Http\Requests\NovaRequest;
 
-
-class Owner extends Resource
+class Publication extends Resource
 {
     /**
      * The model the resource corresponds to.
      *
      * @var string
      */
-    public static $model = \App\Models\Owner::class;
+    public static $model = \App\Models\Publication::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
@@ -33,7 +32,7 @@ class Owner extends Resource
      * @var array
      */
     public static $search = [
-        'id','user.name','user.lastname'
+        'id', 'user.name', 'user.lastname'
     ];
 
     /**
@@ -46,8 +45,10 @@ class Owner extends Resource
     {
         return [
             ID::make()->sortable(),
-            BelongsTo::make(__('user'),'user', User::class),
-            Boolean::make(__('status'),'status'),
+            BelongsTo::make(__('user'),'user',User::class),
+            File::make('file'),
+            Boolean::make(__('status'),'status')
+
         ];
     }
 
@@ -93,8 +94,8 @@ class Owner extends Resource
     public function actions(NovaRequest $request)
     {
         return [
-            (new Actions\OwnerStatus)
-            ->confirmText('¿Estas seguro de cambiar el estado del propietario?')
+            (new Actions\PublicationStatus)
+            ->confirmText('¿Estas seguro de cambiar el estado del publicador?')
             ->confirmButtonText('Sí')
             ->cancelButtonText("No"),
         ];
@@ -102,11 +103,11 @@ class Owner extends Resource
 
     public static function singularLabel()
     {
-        return 'Propietario';
+        return 'Publicacion';
     }
 
     public static function label()
     {
-        return 'Propietarios';
+        return 'Publicaciones';
     }
 }

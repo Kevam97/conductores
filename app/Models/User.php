@@ -67,6 +67,11 @@ class User extends Authenticatable
         return $this->hasMany(Bill::class);
     }
 
+    public function publication()
+    {
+        return $this->hasOne(Publication::class);
+    }
+
 
 
 }

@@ -5,7 +5,16 @@
                 <form wire:submit.prevent="submit" class="w-full max-w-lg">
                     <div class="flex flex-wrap -mx-3 mb-6">
                         <p class= "text-gray-700 text-xs font-bold mb-2">
-                            El plan conductor es para que su perfl quede activo y pueda ser publicado en nuestra bolsa de empleo, el valor es de $7000 pesos mensuales
+                            @role('Conductor')
+                                El plan conductor es para que su perfl quede activo y pueda ser publicado en nuestra bolsa de empleo, el valor es de $7000 pesos mensuales
+                            @endrole
+                            @role('Propietario')
+                                El plan propietario es para que su perfl quede activo y pueda ver las calificaciones de su conductor, el valor es de $10000 pesos mensuales
+                            @endrole
+                            @role('Publicador')
+                                El plan publicador es para que su perfl quede activo y pueda pautar con nosotros.
+                            @endrole
+
                         </p>
 
                         <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">

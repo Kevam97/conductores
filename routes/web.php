@@ -52,6 +52,9 @@ Route::get('/owner', function () {
 
 Route::get('/proponents', [EditOwnerController::class,'proponents'])->middleware(['auth', 'verified', 'permission:owner_create'])->name('proponents');
 
+Route::get('/publications', function () {
+    return view('publications');
+})->middleware(['auth', 'verified'])->name('pubs');
 
 
 Route::get('/subscriptions', function () {

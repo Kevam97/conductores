@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Driver;
+use App\Models\Publication;
 use App\Models\Rating;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -12,7 +13,8 @@ class RateController extends Controller
 {
     public function show(User $user){
         $user->load('drivers');
-        return view('ratings', compact('user'));
+        $publications = Publication::where('status',1)->get();
+        return view('ratings', compact('user','publications'));
     }
 
     public function topTen(){

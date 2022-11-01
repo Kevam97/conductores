@@ -89,4 +89,14 @@ class HealthCompany extends Resource
     {
         return [];
     }
+
+    public static function singularLabel()
+    {
+        return 'EPS';
+    }
+
+    public static function label()
+    {
+        return 'EPS';
+    }
 }

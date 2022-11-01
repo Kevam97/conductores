@@ -456,6 +456,8 @@
     "Document Type": "Tipo de documento",
     "Document": "Documento",
     "Address": "Direccion",
-    "Personal Reference": "Referencia personal"
+    "Personal Reference": "Referencia personal",
+    "user": "usuario",
+    "healthCompany": "EPS"
 
 }

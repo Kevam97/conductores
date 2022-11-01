@@ -16,7 +16,7 @@
             </div>
             <div>
                 <a href="{{route('getdriver',['user' => $item->user->document])  }}">
-                    <img src="{{env('APP_URL').'/storage/'.$item->image}}" class="rounded-lg w-32 mb-4 mx-auto" height="70">
+                    <img src="{{env('APP_URL').'/storage/'.$item->image}}" class="rounded-lg w-60 h-80 mb-4 mx-auto " >
                 </a>
             </div>
             <div>

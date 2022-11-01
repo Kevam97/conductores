@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\Owner;
+use App\Models\Publication;
 use App\Models\User;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
@@ -63,6 +64,7 @@ class UsersForm extends Component
         event(new Registered($user));
         $user->assignRole($role);
         if ($role->name == "Propietario") Owner::create(['user_id' => $user->id]);
+        if ($role->name == "Publicador") Publication::create(['user_id' => $user->id]);
         Auth::login($user);
        return redirect(RouteServiceProvider::HOME);
     }

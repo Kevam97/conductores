@@ -47,9 +47,9 @@ class Driver extends Model
         return $this->hasMany(Offer::class);
     }
 
-    public function vehicles()
+    public function vehicle()
     {
-        return $this->hasMany(Driver::class);
+        return $this->hasOne(Vehicle::class);
     }
 
 }
