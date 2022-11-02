@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Offer;
 use App\Models\Owner;
 use App\Models\User;
 use App\Models\Vehicle;
@@ -13,7 +14,7 @@ class DriversDatatable extends Component
 {
     use WithPagination;
 
-    public Owner $owner;
+    public Vehicle $vehicle;
 
     //public $vehicles;
 
@@ -21,21 +22,19 @@ class DriversDatatable extends Component
     //     $this->vehicles = Vehicle::with('offers')->where('owner_id',$this->owner->id)->paginate(5);
     // }
 
-    public  function driver($vehicleId)
+    public  function driver()
     {
-        $vehicle = Vehicle::find($vehicleId);
-        $vehicle->driver_id = null;
-        $vehicle->save();
+        $this->vehicle->driver_id = null;
+        $this->vehicle->save();
 
         session()->flash('message','Ha dado de baja al conductor');
 
     }
-    public function submit($vehicleId, $driverId)
+    public function submit( $driverId)
     {
-        $vehicle = Vehicle::find($vehicleId);
-        if($vehicle->driver_id == null ){
-            $vehicle->driver_id =  $driverId;
-            $vehicle->save();
+        if($this->vehicle->driver_id == null ){
+            $this->vehicle->driver_id =  $driverId;
+            $this->vehicle->save();
             session()->flash('message','El conductor se le ha asigando el vehiculo');
         }else{
             session()->flash('messageWarn','El vehiculo ya tiene asignado un conductor');
@@ -46,6 +45,7 @@ class DriversDatatable extends Component
     {
         //dd($this->vehicles);
         return view('livewire.drivers-datatable',
-        ['vehicles' => Vehicle::with('offers')->where('owner_id',$this->owner->id)->paginate(1) ]);
+        ['offers' => Offer::where('vehicle_id',$this->vehicle->id)->paginate(3),
+        'vehicle' =>$this->vehicle->id ]);
     }
 }

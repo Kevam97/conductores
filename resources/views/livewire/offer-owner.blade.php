@@ -18,7 +18,7 @@
             </div>
             <div id="{{'carouselOffers'.$item->id}}" class="carousel slide relative" data-bs-ride="carousel">
                 <div class="carousel-inner block w-full overflow-hidden">
-                    <div class="carousel-item active relative float-left h-full w-full">
+                    <div class="carousel-item active relative float-left  h-40 w-25 ">
                         <img
                             src="https://conductores10.com/wp-content/uploads/2022/02/logo-white-4.png"
                             class="block w-full "
@@ -26,7 +26,7 @@
                         />
                     </div>
                     @foreach ($item->images as $image)
-                        <div class="carousel-item  relative float-left w-full">
+                        <div class="carousel-item  relative float-left  h-40 w-25 ">
                             <img
                             src="{{env('APP_URL').'/storage/'.$image->image}}"
                             class="max-w-full h-auto"

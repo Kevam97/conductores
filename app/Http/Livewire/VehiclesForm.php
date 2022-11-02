@@ -3,7 +3,8 @@
 namespace App\Http\Livewire;
 
 use App\Models\Brand;
-use App\Models\Image;
+use Illuminate\Support\Str;
+
 use App\Models\Line;
 use App\Models\Owner;
 use App\Models\Vehicle;
@@ -11,6 +12,8 @@ use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
+use Image;
 
 
 class VehiclesForm extends Component
@@ -57,9 +60,12 @@ class VehiclesForm extends Component
         ]);
         $data = [];
         foreach ($this->images as $image) {
+            $img = Image::make($image)->resize(246,160)->encode('jpg');
+            $url  = Str::random(). '.jpg';
+            Storage::disk('public')->put($url, $img);
             $data[]= [
                 'vehicle_id'=> $vehicle->id,
-                'image'=> $image->store('images','public')
+                'image'=> $url
             ];
         }
         DB::table('images')->insert($data);

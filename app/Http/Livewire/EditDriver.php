@@ -3,9 +3,14 @@
 namespace App\Http\Livewire;
 
 use App\Models\Driver;
+use Illuminate\Support\Str;
+
 use App\Models\HealthCompany;
+use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Livewire\WithFileUploads;
+use Image;
+
 
 class EditDriver extends Component
 {
@@ -33,7 +38,7 @@ class EditDriver extends Component
         $this->healthCompany = $this->driver->healthCompany->name;
         $this->yearsExperience = $this->driver->experience_year;
         $this->license = $this->driver->driving_license;
-        $this->dateLicense = $this->driver->license_expiration;
+        $this->dateLicense = $this->driver->license_expiration->toDateString();
         $this->imagePrev = $this->driver->image;
         $this->facebook =$this->driver->facebook;
         $this->twitter =$this->driver->twitter;
@@ -44,8 +49,15 @@ class EditDriver extends Component
 
     public function submit(){
 
+
         $health = ($this->healthCompany = $this->driver->healthCompany->name) ? $this->driver->health_company_id : $this->healthCompany ;
-        $url = (empty($this->image)) ? $this->driver->image : $this->image->store('image','public') ;
+        if (empty($this->image)) {
+            $url = $this->driver->image;
+        }else{
+            $img = Image::make($this->image)->resize(240,310)->encode('jpg');
+            $url  = Str::random(). '.jpg';
+            Storage::disk('public')->put($url, $img);
+        }
 
         $this->driver->health_company_id = $health;
         $this->driver->experience_year =   $this->yearsExperience;

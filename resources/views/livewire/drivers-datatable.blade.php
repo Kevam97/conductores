@@ -3,7 +3,6 @@
         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
             <div class="p-6 bg-white border-b border-gray-200">
                 <div class="flex flex-col">
-                    @foreach ($vehicles as $vehicle)
 
                     <div class="flex justify-center">
                         <div class="flex flex-col md:flex-row md:max-w-xl rounded-lg bg-white shadow-lg">
@@ -20,8 +19,7 @@
                                 </div>
                                 @endif
                                 <div class="flex flex-col">
-
-                                    @foreach ($vehicle->offers as $offer)
+                                    @foreach ($offers as $offer)
                                     <div class="grid grid-cols-2">
                                         <div class="text-sm border text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                                             <a class="text-blue-600" href="{{route('getdriver',['user' => $offer->driver->user->document])  }}">
@@ -39,12 +37,11 @@
                                         </div>
                                     </div>
                                     @endforeach
+                                    {{ $offers->links() }}
                                 </div>
                             </div>
                         </div>
                     </div>
-                    @endforeach
-                    {{ $vehicles->links() }}
                     @if (session()->has('message'))
                     <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-4 rounded relative" role="alert">
                         {{ session('message') }}

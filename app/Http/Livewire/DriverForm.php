@@ -3,10 +3,15 @@
 namespace App\Http\Livewire;
 
 use App\Models\Driver;
+use Illuminate\Support\Str;
+
 use App\Models\HealthCompany;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Livewire\WithFileUploads;
+use Image;
+
 
 class DriverForm extends Component
 {
@@ -37,7 +42,10 @@ class DriverForm extends Component
 
     public function submit(){
         $this->validate();
-        $url = $this->image->store('image','public');
+        //$url = $this->image->store('image','public');
+        $img = Image::make($this->image)->resize(240,310)->encode('jpg');
+        $url  = Str::random(). '.jpg';
+        Storage::disk('public')->put($url, $img);
         $driver = Driver::where('user_id',Auth::id())->first();
         if(empty($driver)){
 

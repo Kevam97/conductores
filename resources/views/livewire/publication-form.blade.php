@@ -26,7 +26,7 @@
 
                 </form>
                 <div class="h-40 w-25">
-
+d
                     <img  src="{{ env('APP_URL').'/storage/'.$filePrev}}" alt="">
                 </div>
 

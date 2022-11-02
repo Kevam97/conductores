@@ -5,8 +5,11 @@ namespace App\Http\Livewire;
 use App\Models\Publication;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
-use Livewire\WithFileUploads;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
+use Livewire\WithFileUploads;
+use Image;
 class PublicationForm extends Component
 {
 
@@ -32,13 +35,18 @@ class PublicationForm extends Component
 
     public function submit(){
         $this->validate();
-        $url = $this->file->store('image','public');
+        // $url = $this->file->store('publicity','public');
 
+        $img = Image::make($this->file)->resize(400,160)->encode('jpg');
+        $name  = Str::random(). '.jpg';
+        Storage::disk('public')->put($name, $img);
+
+        $url = $this->file;
         if (empty($this->publication)) {
 
             Publication::create([
                 'user_id' => Auth::id(),
-                'file' => $url,
+                'file' => $name,
                 'date_out' => date("Y-m-d",strtotime(date("Y-m-d")."+ 1 month"))
             ]);
 
@@ -46,7 +54,7 @@ class PublicationForm extends Component
             $this->mount();
         }else{
 
-            $this->publication->file = $url;
+            $this->publication->file = $name;
             $this->publication->save();
 
             $this->reset();

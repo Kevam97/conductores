@@ -5,9 +5,13 @@ namespace App\Http\Livewire;
 use App\Models\Brand;
 use App\Models\Line;
 use App\Models\Vehicle;
+use Illuminate\Support\Str;
+
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Livewire\WithFileUploads;
+use Image;
 
 class EditVehicle extends Component
 {
@@ -64,11 +68,16 @@ class EditVehicle extends Component
         $data = [];
         if(!empty($this->images))
         {
-            foreach ($this->images as $image)
-            $data[]= [
-                'vehicle_id'=> $this->vehicle->id,
-                'image'=> $image->store('images','public')
-            ];
+            foreach ($this->images as $image){
+                $img = Image::make($image)->resize(246,160)->encode('jpg');
+                $url  = Str::random(). '.jpg';
+                Storage::disk('public')->put($url, $img);
+
+                $data[]= [
+                    'vehicle_id'=> $this->vehicle->id,
+                    'image'=> $image->store('images','public')
+                ];
+            }
 
             $images = $this->vehicle->images;
             foreach ($images as $key => $image) {
