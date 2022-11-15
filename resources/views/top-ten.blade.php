@@ -1,7 +1,7 @@
 <x-guest-layout>
     <div class="bg-black">
         <div class="flex justify-center text-white text-xl italic	font-bold">
-            CONDUCTORES 10
+            <img src="{{env('APP_URL').'/storage/letrero.jpg' }}" alt=""/>
         </div>
 
         <div class="grid grid-cols-2">
