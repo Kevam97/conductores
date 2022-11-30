@@ -1,7 +1,7 @@
 <x-guest-layout>
     <div class="bg-black">
         <div class="flex justify-center text-white text-xl italic	font-bold">
-            <img src="{{env('APP_URL').'/storage/letrero.jpg' }}" alt=""/>
+            <img src="{{env('APP_URL').'/storage/letrero.jpg' }}" />
         </div>
 
         <div class="grid grid-cols-2">
