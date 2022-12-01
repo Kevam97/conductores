@@ -4,21 +4,19 @@ namespace App\Nova;
 
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Fields\Text;
+
 use Laravel\Nova\Http\Requests\NovaRequest;
-use Laravel\Nova\Fields\BelongsTo;
-use Laravel\Nova\Fields\HasMany;
-use Laravel\Nova\Fields\Boolean;
 
-
-
-class Owner extends Resource
+class Vehicle extends Resource
 {
+    public static $displayInNavigation = false;
     /**
      * The model the resource corresponds to.
      *
-     * @var string
+     * @var class-string<\App\Models\Vehicle>
      */
-    public static $model = \App\Models\Owner::class;
+    public static $model = \App\Models\Vehicle::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
@@ -33,7 +31,7 @@ class Owner extends Resource
      * @var array
      */
     public static $search = [
-        'id','user.name','user.lastname'
+        'id', 'vehicle_registration'
     ];
 
     /**
@@ -46,9 +44,9 @@ class Owner extends Resource
     {
         return [
             ID::make()->sortable(),
-            BelongsTo::make(__('user'),'user', User::class),
-            Boolean::make(__('status'),'status'),
-            HasMany::make(__('vehicle'),'vehicles' ,Vehicle::class)
+            Text::make(__('vehicle_registration'),'vehicle_registration'),
+            Text::make(__('model'),'model'),
+            Text::make(__('company'),'company')
         ];
     }
 
@@ -93,21 +91,16 @@ class Owner extends Resource
      */
     public function actions(NovaRequest $request)
     {
-        return [
-            (new Actions\OwnerStatus)
-            ->confirmText('¿Estas seguro de cambiar el estado del propietario?')
-            ->confirmButtonText('Sí')
-            ->cancelButtonText("No"),
-        ];
+        return [];
     }
 
     public static function singularLabel()
     {
-        return 'Propietario';
+        return 'Vehiculo';
     }
 
     public static function label()
     {
-        return 'Propietarios';
+        return 'Vehiculos';
     }
 }

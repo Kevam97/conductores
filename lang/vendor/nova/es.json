@@ -458,6 +458,9 @@
     "Address": "Direccion",
     "Personal Reference": "Referencia personal",
     "user": "usuario",
-    "healthCompany": "EPS"
+    "healthCompany": "EPS",
+    "vehicle_registration":"Placa",
+    "model": "modelo",
+    "vehicle":"Vehiculo"
 
 }

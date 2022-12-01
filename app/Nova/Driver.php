@@ -10,6 +10,7 @@ use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\HasMany;
+use Laravel\Nova\Fields\HasOne;
 use Laravel\Nova\Query\Search\SearchableRelation;
 
 
@@ -67,6 +68,7 @@ class Driver extends Resource
             HasMany::make(__('WorkReferences'),'WorkReferences',WorkReference::class),
             HasMany::make(__('Courses'),'Courses', Course::class),
             HasMany::make(__('Ratings'),'Ratings', Rating::class ),
+            HasOne::make(__('vehicle'),'vehicle',Vehicle::class)
         ];
     }
 
