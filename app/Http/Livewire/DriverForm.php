@@ -65,8 +65,10 @@ class DriverForm extends Component
         }else{
             session()->flash('messageWarn','Ya estas registrado recarga la pagina');
         }
-        $this->reset();
-        $this->mount();
+
+        return redirect()->route('dashboard');
+        // $this->reset();
+        // $this->mount();
 
     }
 
