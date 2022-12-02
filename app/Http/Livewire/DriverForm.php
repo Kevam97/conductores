@@ -33,9 +33,9 @@ class DriverForm extends Component
         'image' => [
             'required',
             'mimes:png,jpg'],
-        'facebook' => 'required',
-        'twitter' => 'required',
-        'instagram' => 'required',
+        // 'facebook' => 'required',
+        // 'twitter' => 'required',
+        // 'instagram' => 'required',
         'aboutMe'=> 'required',
 
     ];
