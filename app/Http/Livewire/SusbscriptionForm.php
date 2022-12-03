@@ -34,9 +34,12 @@ class SusbscriptionForm extends Component
             if(count($this->user->drivers[0]->annexes) == 3 && count($this->user->drivers[0]->personalReferences) == 3 && count($this->user->drivers[0]->workReferences) == 3 && count($this->user->drivers[0]->courses) == 3){
                 return true;
             }else return false;
-        }else{
-            return false;
         }
+        if(!empty($this->user->owners[0]->vehicles) &&count($this->user->owners[0]->vehicles) >= 1){
+            return true;
+        }
+        return false;
+        // if(!empty($this->user->drivers[0]->annexes))
     }
 
     public function submit()
@@ -54,6 +57,7 @@ class SusbscriptionForm extends Component
             if(empty($pay->status)){
                 Bill::create([
                     'user_id' => $this->user->id,
+                    'reference' => $pay->data->factura,
                     'status' => 1,
                     'cutoff' => $pay->data->fecha
                 ]);

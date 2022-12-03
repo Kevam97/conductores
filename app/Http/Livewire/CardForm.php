@@ -45,7 +45,7 @@ class CardForm extends Component
         }
 
         session()->flash('message','Se ha registrado la tarjeta');
-
+        return redirect()->route('subs');
     }
 
 
