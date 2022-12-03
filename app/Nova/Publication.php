@@ -47,7 +47,7 @@ class Publication extends Resource
             ID::make()->sortable(),
             BelongsTo::make(__('user'),'user',User::class),
             File::make('file'),
-            Boolean::make(__('status'),'status')
+            Boolean::make(__('status'),'status')->readonly()
 
         ];
     }

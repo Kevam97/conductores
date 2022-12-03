@@ -61,7 +61,7 @@ class Driver extends Resource
             Text::make(__('experience year'),'experience_year'),
             Text::make(__('driving license'),'driving_license'),
             Date::make(__('license expiration'),'license_expiration'),
-            Boolean::make(__('status'),'status'),
+            Boolean::make(__('status'),'status')->readonly(),
 
             HasMany::make(__('Annexes'),'Annexes',Annex::class),
             HasMany::make(__('PersonalReferences'),'PersonalReferences',PersonalReference::class),

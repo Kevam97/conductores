@@ -47,7 +47,7 @@ class Owner extends Resource
         return [
             ID::make()->sortable(),
             BelongsTo::make(__('user'),'user', User::class),
-            Boolean::make(__('status'),'status'),
+            Boolean::make(__('status'),'status')->readonly(),
             HasMany::make(__('vehicle'),'vehicles' ,Vehicle::class)
         ];
     }
