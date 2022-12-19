@@ -1,8 +1,6 @@
-@role('Conductor')
 @cannot('offer_view')
 <div class="blur-lg">
 @endcannot
-@endrole
 <div class="flex flex-col px-6 rounded-lg shadow-lg bg-neutral-900 w-4/6">
     <h2 class="font-semibold text-xl text-white  text-center leading-tight">
         {{ __('Propietarios') }}

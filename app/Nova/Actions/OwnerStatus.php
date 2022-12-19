@@ -32,12 +32,14 @@ class OwnerStatus extends Action
                     'status'=> 1
                 ]);
                 $model->user->givePermissionTo('owner_ratings');
+                $model->user->givePermissionTo('offer_view');
             }else{
 
                 $model->update([
                     'status'=> 0
                 ]);
                 $model->user->revokePermissionTo('owner_ratings');
+                $model->user->revokePermissionTo('offer_view');
             }
         }
     }
