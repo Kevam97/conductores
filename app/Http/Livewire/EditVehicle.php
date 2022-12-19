@@ -64,6 +64,7 @@ class EditVehicle extends Component
         $this->vehicle->payout = $this->payout;
         $this->vehicle->days_off = $this->dayOff ;
         $this->vehicle->social_benefits =  $this->benefits;
+        $this->vehicle->requirements = $this->requirements;
         $this->vehicle->company = $this->company;
         $data = [];
         if(!empty($this->images))

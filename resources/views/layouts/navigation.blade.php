@@ -37,11 +37,11 @@
                         {{ __('Tus vehiculos') }}
                     </x-nav-link>
                     @endcan
-                    @can('offer_view')
+                    @hasanyrole('Conductor|Propietario')
                     <x-nav-link :href="route('offers')" :active="request()->routeIs('offers')">
                         {{ __('Oferta') }}
                     </x-nav-link>
-                    @endcan
+                    @endhasanyrole
                     @can('publisher_create')
                     <x-nav-link :href="route('pubs')" :active="request()->routeIs('pubs')">
                         {{ __('Publicar') }}

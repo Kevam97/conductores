@@ -80,7 +80,8 @@
                         <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-zip">
                             Requisito para emplear
                         </label>
-                        <input wire:model='requirements' class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-zip" type="text" placeholder="Requisito">
+                        <textarea wire:model="requirements" maxlength="495" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="about-me">
+                        </textarea>
                         @error('requirements') <span class="text-red-500 text-xs italic">{{$message }}</span> @enderror
                       </div>
                     </div>

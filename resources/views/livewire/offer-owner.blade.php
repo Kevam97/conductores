@@ -1,4 +1,9 @@
-<div class="flex flex-col px-6 rounded-lg shadow-lg bg-neutral-900 max-w ">
+@role('Conductor')
+@cannot('offer_view')
+<div class="blur-lg">
+@endcannot
+@endrole
+<div class="flex flex-col px-6 rounded-lg shadow-lg bg-neutral-900 w-4/6">
     <h2 class="font-semibold text-xl text-white  text-center leading-tight">
         {{ __('Propietarios') }}
     </h2>
@@ -13,7 +18,7 @@
                     <span class="underline text-slate-600	 mb-2 text-sm font-medium dark:text-gray-300 ">LIQUIDACION:</span>  {{ number_format((int)$item->payout) }}
                 </div>
                 <div>
-                    <span class="underline text-slate-600	 mb-2 text-sm font-medium dark:text-gray-300 ">OBSERVACIONES:</span>  {{$item->requirements }}
+                    <span class="underline text-slate-600	 mb-2 text-sm font-medium dark:text-gray-300 ">OBSERVACIONES:</span>  <p class="break-words">{{$item->requirements }}</p>
                 </div>
             </div>
             <div id="{{'carouselOffers'.$item->id}}" class="carousel slide relative" data-bs-ride="carousel">

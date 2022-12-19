@@ -30,6 +30,8 @@ trait EpaycoTrait
             "token_card" => $card,
             "doc_type" => "CC",
             "doc_number" => $user->document,
+            "url_confirmation" => "https://app.conductores10.com/api/payment",
+            "method_confirmation" => "POST"
         ]);
 
         return $sub;
