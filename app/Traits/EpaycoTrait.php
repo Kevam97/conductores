@@ -30,8 +30,8 @@ trait EpaycoTrait
             "token_card" => $card,
             "doc_type" => "CC",
             "doc_number" => $user->document,
-            "url_confirmation" => "https://app.conductores10.com/api/payment",
-            "method_confirmation" => "POST"
+            "url_confirmation" => "https://ejemplo.com/confirmacion",
+            "method_confirmation" => "post"
         ]);
 
         return $sub;
@@ -41,6 +41,11 @@ trait EpaycoTrait
 
         $sub = $this->epayco->subscriptions->cancel($idSus);
 
+        return $sub;
+    }
+
+    public function getSubscription($idSus){
+        $sub = $this->epayco->subscriptions->get($idSus);
         return $sub;
     }
 
@@ -77,6 +82,44 @@ trait EpaycoTrait
 
         return ['card' =>$tokenCard->id, 'customer' => $customer->data->customerId];
 
+    }
+
+    public function addPermission(User $user){
+        if($user->hasRole('Conductor')){
+            $user->drivers[0]->status = 0;
+            $user->drivers[0]->save();
+            $user->givePermissionTo('offer_view');
+        }
+        if($user->hasRole('Propietario')){
+            $user->owners[0]->status = 0;
+            $user->owners[0]->save();
+            $user->givePermissionTo('offer_view');
+            $user->givePermissionTo('owner_ratings');
+        }
+        if($user->hasRole('Publicador')){
+            $user->publication->status = 0;
+            $user->givePermissionTo('publisher_create');
+            $user->publication->save();
+        }
+    }
+
+    public function revokePermission(User $user){
+        if($user->hasRole('Conductor')){
+            $user->drivers[0]->status = 0;
+            $user->drivers[0]->save();
+            $user->revokePermissionTo('offer_view');
+        }
+        if($user->hasRole('Propietario')){
+            $user->owners[0]->status = 0;
+            $user->owners[0]->save();
+            $user->revokePermissionTo('offer_view');
+            $user->revokePermissionTo('owner_ratings');
+        }
+        if($user->hasRole('Publicador')){
+            $user->publication->status = 0;
+            $user->revokePermissionTo('publisher_create');
+            $user->publication->save();
+        }
     }
 
     public function listPlans()

@@ -49,18 +49,21 @@ class SusbscriptionForm extends Component
         if($form){
             $this->plan = ($this->user->hasRole('Conductor'))  ? 'Conductor' : 'Propietario';
             $sub = $this->subscriptions($this->user,$this->plan,$this->card );
+            // dd($sub);
             if($sub->status){
                 $this->user->subscription = $sub->id;
                 $this->user->save();
             }
             $pay = $this->paySubscriptions($this->user,$this->plan,$this->card);
-            if(empty($pay->status)){
+            // dd($pay);
+            if(empty($pay->status) && isset($pay->success)){
                 Bill::create([
                     'user_id' => $this->user->id,
                     'reference' => $pay->data->factura,
                     'status' => 1,
                     'cutoff' => $pay->data->fecha
                 ]);
+                $this->addPermission($this->user);
                 session()->flash('message','Te has suscrito correctamente');
 
             }else{
@@ -73,8 +76,8 @@ class SusbscriptionForm extends Component
 
     public function render()
     {
-        // $this->__construct();
-        // dd($this->listPlans());
+
+        // dd($this->getSubscription($this->user->subscription));
         return view('livewire.susbscription-form');
     }
 }

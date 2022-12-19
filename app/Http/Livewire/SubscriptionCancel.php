@@ -15,6 +15,7 @@ class SubscriptionCancel extends Component
         $user = User::find(Auth::id());
 
         $cancel = $this->cancelSubscription($user->subscription);
+        $this->revokePermission($user);
         if($cancel->status){
             session()->flash('message',$cancel->message);
         }else{
