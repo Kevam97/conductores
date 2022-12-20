@@ -16,6 +16,9 @@
                     <span class="underline text-slate-600	 mb-2 text-sm font-medium dark:text-gray-300 ">LIQUIDACION:</span>  {{ number_format((int)$item->payout) }}
                 </div>
                 <div>
+                    <span class="underline text-slate-600	 mb-2 text-sm font-medium dark:text-gray-300 ">EMPRESA:</span>  {{$item->company }}
+                </div>
+                <div>
                     <span class="underline text-slate-600	 mb-2 text-sm font-medium dark:text-gray-300 ">OBSERVACIONES:</span>  <p class="break-words">{{$item->requirements }}</p>
                 </div>
             </div>
