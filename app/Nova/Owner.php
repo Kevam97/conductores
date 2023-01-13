@@ -8,8 +8,7 @@ use Laravel\Nova\Http\Requests\NovaRequest;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\Boolean;
-
-
+use Laravel\Nova\Fields\Text;
 
 class Owner extends Resource
 {
@@ -47,6 +46,7 @@ class Owner extends Resource
         return [
             ID::make()->sortable(),
             BelongsTo::make(__('user'),'user', User::class),
+            Text::make(__('notes'),'notes'),
             Boolean::make(__('status'),'status')->readonly(),
             HasMany::make(__('vehicle'),'vehicles' ,Vehicle::class)
         ];

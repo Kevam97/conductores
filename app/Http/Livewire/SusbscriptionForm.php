@@ -67,7 +67,7 @@ class SusbscriptionForm extends Component
                 session()->flash('message','Te has suscrito correctamente');
 
             }else{
-                session()->flash('messageError',$pay->data->errors);
+                session()->flash('messageError',$pay->message);
             }
         }else{
             session()->flash('messageError','Debes completar regsitrar toda la informacion antes de suscribirte');

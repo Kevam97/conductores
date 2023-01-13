@@ -19,6 +19,12 @@
                     <span class="underline text-slate-600	 mb-2 text-sm font-medium dark:text-gray-300 ">EMPRESA:</span>  {{$item->company }}
                 </div>
                 <div>
+                    <span class="underline text-slate-600	 mb-2 text-sm font-medium dark:text-gray-300 ">DIA DE DESCANSO:</span>  {{$item->days_off }}
+                </div>
+                <div>
+                    <span class="underline text-slate-600	 mb-2 text-sm font-medium dark:text-gray-300 ">PRESTACIONES:</span> @if ($item->days_off) SI  @else  NO @endif
+                </div>
+                <div>
                     <span class="underline text-slate-600	 mb-2 text-sm font-medium dark:text-gray-300 ">OBSERVACIONES:</span>  <p class="break-words">{{$item->requirements }}</p>
                 </div>
             </div>
@@ -58,9 +64,11 @@
                 </button>
             </div>
             <div>
-                <button type="submit" class="focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:focus:ring-yellow-900">
-                    Aplicar
-                </button>
+                @can('offer_view')
+                    <button type="submit" class="focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:focus:ring-yellow-900">
+                        Aplicar
+                    </button>
+                @endcan
             </div>
         </div>
         <br>

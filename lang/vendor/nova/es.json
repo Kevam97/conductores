@@ -461,6 +461,12 @@
     "healthCompany": "EPS",
     "vehicle_registration":"Placa",
     "model": "modelo",
-    "vehicle":"Vehiculo"
+    "vehicle":"Vehiculo",
+    "brand": "Marca",
+    "line": "Linea",
+    "days_off": "Dia libre",
+    "payout": "Salario",
+    "social_benefits":"Prestaciones sociales",
+    "requirements": "Requisitos"
 
 }

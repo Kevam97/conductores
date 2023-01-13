@@ -2,11 +2,14 @@
 
 namespace App\Http\Livewire;
 
+use App\Mail\ConfirmJob;
+use App\Models\Driver;
 use App\Models\Offer;
 use App\Models\Owner;
 use App\Models\User;
 use App\Models\Vehicle;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -36,6 +39,8 @@ class DriversDatatable extends Component
             $this->vehicle->driver_id =  $driverId;
             $this->vehicle->save();
             session()->flash('message','El conductor se le ha asigando el vehiculo');
+            $user = Driver::find($driverId)->user;
+            Mail::to($user->email)->send(new ConfirmJob($user,$this->vehicle));
         }else{
             session()->flash('messageWarn','El vehiculo ya tiene asignado un conductor');
         }

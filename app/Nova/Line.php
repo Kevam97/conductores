@@ -3,29 +3,25 @@
 namespace App\Nova;
 
 use Illuminate\Http\Request;
-use Laravel\Nova\Fields\BelongsTo;
-use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
-
 use Laravel\Nova\Http\Requests\NovaRequest;
 
-class Vehicle extends Resource
+class Line extends Resource
 {
-    public static $displayInNavigation = false;
     /**
      * The model the resource corresponds to.
      *
-     * @var class-string<\App\Models\Vehicle>
+     * @var class-string<\App\Models\Line>
      */
-    public static $model = \App\Models\Vehicle::class;
+    public static $model = \App\Models\Line::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
      *
      * @var string
      */
-    public static $title = 'id';
+    public static $title = 'name';
 
     /**
      * The columns that should be searched.
@@ -33,7 +29,7 @@ class Vehicle extends Resource
      * @var array
      */
     public static $search = [
-        'id', 'vehicle_registration'
+        'id','name'
     ];
 
     /**
@@ -46,15 +42,7 @@ class Vehicle extends Resource
     {
         return [
             ID::make()->sortable(),
-            Text::make(__('vehicle_registration'),'vehicle_registration'),
-            BelongsTo::make(__('brand'),'brand',Brand::class),
-            BelongsTo::make(__('line'),'line',Line::class),
-            Text::make(__('model'),'model'),
-            Text::make(__('days_off'),'days_off'),
-            Text::make(__('payout'),'payout'),
-            Text::make(__('company'),'company'),
-            Boolean::make(__('social_benefits'),'social_benefits'),
-            Text::make(__('requirements'),'requirements'),
+            Text::make(__('name'),'name'),
         ];
     }
 
@@ -104,11 +92,11 @@ class Vehicle extends Resource
 
     public static function singularLabel()
     {
-        return 'Vehiculo';
+        return 'Linea';
     }
 
     public static function label()
     {
-        return 'Vehiculos';
+        return 'Lineas';
     }
 }

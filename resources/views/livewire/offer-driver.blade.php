@@ -22,11 +22,13 @@
                         <img src="{{env('APP_URL').'/storage/'.$item->image}}" class="rounded-lg w-60 h-80 mb-4 mx-auto " >
                     </a>
                 </div>
+                @can('offer_view')
                 <div>
                     <a class="focus:outline-none text-white bg-yellow-400 font-medium rounded-lg text-sm px-5 py-2  dark:focus:ring-yellow-900"href="{{env('APP_URL').'/storage/'.$item->annexes->first()->file}}" target="_blank">
                         Ver hoja de vida
                     </a>
                 </div>
+                @endcan
             </div>
             <br>
         </form>

@@ -123,11 +123,11 @@
                 {{ __('Tus vehiculos') }}
             </x-responsive-nav-link>
             @endcan
-            @can('offer_view')
+            @hasanyrole('Conductor|Propietario')
             <x-responsive-nav-link :href="route('offers')" :active="request()->routeIs('offers')">
                 {{ __('Oferta') }}
             </x-responsive-nav-link>
-            @endcan
+            @endhasanyrole
             @can('publisher_create')
             <x-responsive-nav-link :href="route('pubs')" :active="request()->routeIs('pubs')">
                 {{ __('Publicar') }}
