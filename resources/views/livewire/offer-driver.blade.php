@@ -18,7 +18,9 @@
                     </div>
                 </div>
                 <div>
+                    @can('offer_view')
                     <a href="{{route('getdriver',['user' => $item->user->document])  }}">
+                    @endcan
                         <img src="{{env('APP_URL').'/storage/'.$item->image}}" class="rounded-lg w-60 h-80 mb-4 mx-auto " >
                     </a>
                 </div>
