@@ -8,7 +8,7 @@
         @foreach ($drivers as $item)
         <form action="">
             <div class="grid grid-cols-2 divide-x py-3 px-3  rounded-lg bg-white shadow-lg" ">
-                <div class="flex flex-col ...">
+                <div class="flex flex-col select-none">
                     <div>{{$item->user->name.' '.$item->user->lastname}}</div>
                     <div>Cuenta con {{$item->experience_year}} años de experiencia</div>
                     <div class="flex py-2">

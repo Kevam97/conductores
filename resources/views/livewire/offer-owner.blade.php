@@ -8,7 +8,7 @@
     @foreach ($owners as $item)
     <form wire:submit.prevent="submit({{$item->id}})" class="w-full max-w-lg">
         <div class="grid grid-cols-2 py-3 px-3  rounded-lg  bg-white ">
-            <div class="flex flex-col ...">
+            <div class="flex flex-col select-none">
                 <div>
                     <span class="underline text-slate-600	 mb-2 text-sm font-medium dark:text-gray-300 ">PLACA:</span>  {{$item->vehicle_registration }}
                 </div>
