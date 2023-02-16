@@ -24,7 +24,7 @@ class DatabaseSeeder extends Seeder
 
         $user = \App\Models\User::factory()->create([
             'name' => 'Admin',
-            'email' => 'test@example.com',
+            'email' => 'admin@admin.com',
         ]);
         $driver = \App\Models\User::factory()->create([
             'name' => 'Driver',

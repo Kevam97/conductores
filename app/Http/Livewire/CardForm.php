@@ -37,6 +37,8 @@ class CardForm extends Component
 
         $epayco = $this->create($card, $user);
         $card->epayco_id = $epayco['card'];
+        $card->number = substr_replace($card->number,'***********',0,strlen($card->number)-4);
+        $card->cvc = md5($card->cvc);
         $card->save();
 
         if ($user->epayco_id == null){

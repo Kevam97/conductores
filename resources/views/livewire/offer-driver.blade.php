@@ -12,7 +12,7 @@
                     <div>{{$item->user->name.' '.$item->user->lastname}}</div>
                     <div>Cuenta con {{$item->experience_year}} años de experiencia</div>
                     <div class="flex py-2">
-                        <p class=" italic text-sm text-slate-600 break-words ">
+                        <p class=" italic text-sm text-slate-600 break-all ">
                             "{{$item->about_me }}"
                         </p>
                     </div>

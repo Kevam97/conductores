@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('cards', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->nullable()->constrained();
-            $table->string('epayco_id');
+            $table->string('epayco_id')->nullable();
             $table->string('number');
             $table->string('year');
             $table->string('month');

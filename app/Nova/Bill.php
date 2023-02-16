@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\Date;
+use Laravel\Nova\Fields\Text;
 
 
 use Laravel\Nova\Http\Requests\NovaRequest;
@@ -50,6 +51,7 @@ class Bill extends Resource
             ID::make()->sortable(),
             BelongsTo::make('User'),
             Boolean::make('Status'),
+            Text::make(__('reference'),'reference'),
             Date::make('cutoff')
         ];
     }

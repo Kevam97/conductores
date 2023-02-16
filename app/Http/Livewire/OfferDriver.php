@@ -12,8 +12,10 @@ class OfferDriver extends Component
     public function render()
     {
         return view('livewire.offer-driver',[
-            'drivers' => Driver::where('status',1)->with(['annexes'=> function($query)
-                                {$query->where('comment','curriculum');}])->paginate(2)
+            'drivers' => Driver::whereHas('annexes', function ($query) {
+                $query->where('comment', 'curriculum');
+            })->with('annexes')->paginate(2)
+
         ]);
     }
 }

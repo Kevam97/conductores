@@ -2,6 +2,7 @@
 
 namespace App\Nova\Actions;
 
+use App\Models\Bill;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
@@ -21,7 +22,7 @@ class OwnerStatus extends Action
      * @param  \Illuminate\Support\Collection  $models
      * @return mixed
      */
-    public $onlyOnDetail = true;
+    public $onlyOnIndex = true;
 
     public function handle(ActionFields $fields, Collection $models)
     {
@@ -33,6 +34,13 @@ class OwnerStatus extends Action
                 ]);
                 $model->user->givePermissionTo('owner_ratings');
                 $model->user->givePermissionTo('offer_view');
+
+                Bill::create([
+                    'user_id' => $model->user->id,
+                    'reference' => 'Pago en efectivo '.date("d-m-Y"),
+                    'status' => 1,
+                    'cutoff' => date("d-m-Y",strtotime(date("d-m-Y")."+ 1 month"))
+                ]);
             }else{
 
                 $model->update([
@@ -56,6 +64,6 @@ class OwnerStatus extends Action
     }
     public function name()
     {
-        return __('Cambiar estado propietario');
+        return __('Realizar pago');
     }
 }

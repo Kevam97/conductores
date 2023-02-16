@@ -79,6 +79,17 @@
                                 {{ __('Cerrar sesion') }}
                             </x-dropdown-link>
                         </form>
+                        <div>
+                                @if (!empty(Auth::user()->bills()->latest()->first()->cutoff))
+                                    <p class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out">
+                                    Fin de la suscripcion: {{ date_format(Auth::user()->bills()->latest()->first()->cutoff,"d-m-Y") ; }}
+                                    </p>
+                                @else
+                                <p class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out">
+                                    No se ha suscrito
+                                </p>
+                                @endif
+                        </div>
                     </x-slot>
                 </x-dropdown>
             </div>

@@ -95,7 +95,7 @@ class Owner extends Resource
     {
         return [
             (new Actions\OwnerStatus)
-            ->confirmText('¿Estas seguro de cambiar el estado del propietario?')
+            ->confirmText('¿Estas seguro de registrar el pago?')
             ->confirmButtonText('Sí')
             ->cancelButtonText("No"),
         ];

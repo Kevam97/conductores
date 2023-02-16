@@ -17,9 +17,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('Welcome');
+// Route::get('/', function () {
+//     return view('welcome');
+// })->name('Welcome');
 
 Route::get('/calificar/{user:document}',[RateController::class,'show'])->name('rate');
 

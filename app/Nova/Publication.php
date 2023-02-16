@@ -95,7 +95,7 @@ class Publication extends Resource
     {
         return [
             (new Actions\PublicationStatus)
-            ->confirmText('¿Estas seguro de cambiar el estado del publicador?')
+            ->confirmText('¿Estas seguro de registrar el pago?')
             ->confirmButtonText('Sí')
             ->cancelButtonText("No"),
         ];
