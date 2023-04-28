@@ -26,7 +26,7 @@ class RateView extends Component
                 ->where('created_at','>',$date)
                 ->where('created_at','<',$dateEnd)
                 ->get();
-        $ruleIp = (empty($rating)) ? true : false ;
+        $ruleIp = ($rating->isEmpty()) ? true : false ;
         return $ruleIp;
 
     }
